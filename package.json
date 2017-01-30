@@ -1,0 +1,26 @@
+{
+  "name": "pathway-commons",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/pc.js",
+  "scripts": {
+    "clean": "rimraf Docs/* rimraf dist/*",
+    "document": "jsdoc ./src -d ./docs",
+    "build": "browserify --standalone pathway-commons -e src/index.js -o dist/pc.js -d -t [ babelify --comments false ]",
+    "run": "npm run clean npm run document npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Manfred Cheung @ UofT",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "query-string": "^4.3.1"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.22.0",
+    "babelify": "^7.3.0",
+    "browserify": "^14.0.0",
+    "jsdoc": "^3.4.3",
+    "rimraf": "^2.5.4"
+  }
+}
