@@ -4,11 +4,11 @@
   "description": "",
   "main": "dist/pc.js",
   "scripts": {
-    "clean": "rimraf Docs/* rimraf dist/*",
+	"predocument": "rimraf docs/*",
     "document": "jsdoc ./src -d ./docs",
+	"prebuild": "rimraf dist/*",
     "build": "browserify --standalone pathway-commons -e src/index.js -o dist/pc.js -d -t [ babelify --comments false ]",
-    "run": "npm run clean npm run document npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run document npm run build"
   },
   "author": "Manfred Cheung @ UofT",
   "license": "MIT",
