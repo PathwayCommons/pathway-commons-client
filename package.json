@@ -4,9 +4,10 @@
   "description": "",
   "main": "dist/pc.js",
   "scripts": {
-	"predocument": "rimraf docs/*",
+    "predocument": "rimraf docs/*",
     "document": "jsdoc ./src -d ./docs",
-	"prebuild": "rimraf dist/*",
+    "postdocument": "open docs/index.html",
+    "prebuild": "rimraf dist/*",
     "build": "browserify --standalone pathway-commons -e src/index.js -o dist/pc.js -d -t [ babelify --comments false ]",
     "start": "npm run document npm run build"
   },
