@@ -3,7 +3,7 @@ import {_httpGetAsync, _parseJson} from './private/helpers.js';
 /**
  * Fetches data source object from Pathway Commons
  * @module getDataSources
- * @param {requestCallback} callback - dataSourcesArray
+ * @param {requestCallback} callback - Terminating callback, see below for arguments.
  */
 const getDataSources = (callback) => {
 	//copy data sources to the global array: kepp just some fields and only pathway data sources (not e.g., ChEBI)
@@ -21,6 +21,13 @@ const getDataSources = (callback) => {
 			};
 		});
 		dataSources = output;
+
+		/**
+		* Callback for get function, which is always called on completion
+		*
+		* @callback requestCallback
+		* @param {array} dataSources - An array containing data sources retrieved from PC, else empty array.
+		*/
 		callback(dataSources);
 	});
 }
