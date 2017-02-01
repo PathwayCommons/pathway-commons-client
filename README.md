@@ -1,27 +1,38 @@
-#pathway-commons
+# pathway-commons
 
-##Build
-The following tools are required to start the build process: nodejs, and npm
 
-For OSX, run the following commands in order to install these tools. (Source: http://blog.teamtreehouse.com/install-node-js-npm-mac)
 
-```
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-brew install node
-```
+## Required software
 
-Follow the steps below to download and install application
+- [Node.js](https://nodejs.org/en/) >=6.3.0
 
-1. Download or clone repository from github into any directory
-2. Run ```npm install``` in the directory in order to install all node dependencies
 
-This project uses npm as a build tool. The following commands are available:
 
-####document
-Run ```npm run document``` to generate documentation and place resulting html files in the docs folder
+## Configuration
 
-####build
-Run ```npm run build``` to do a production build of the application and output the result to the public folder.
+The following environment variables can be used to configure the server:
 
-####start
-Run ```npm run start``` to document and then build the application
+- `NODE_ENV` : the environment mode, either `production` or `development` (default)
+- `PORT` : the port on which the server runs (default 3000)
+
+
+
+## Run targets
+
+- `npm start` : start the server
+- `npm stop` : stop the server
+- `npm run build` : build project
+- `npm run build-prod` : build the project for production
+- `npm run clean` : clean the project
+- `npm run watch` : watch mode (debug mode enabled, auto rebuild, livereload)
+- `npm test` : run tests
+- `npm run lint` : lint the project
+- `npm run document` : Generate documentation and place resulting HTML files in the docs folder
+
+
+
+## Testing
+
+All files `/test` will be run by [Mocha](https://mochajs.org/).  You can `npm test` to run all tests, or you can run `mocha -g specific-test-name` (prerequisite: `npm install -g mocha`) to run specific tests.
+
+[Chai](http://chaijs.com/) is included to make the tests easier to read and write.

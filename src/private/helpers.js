@@ -4,7 +4,7 @@
  * @param {string} url
  * @param {requestCallback} callback - responseText
  */
-function _httpGetAsync(url, callback) {
+export const _httpGetAsync = (url, callback) => {
 	callback(httpResponseText);
 }
 
@@ -13,6 +13,6 @@ function _httpGetAsync(url, callback) {
  * @param {string} jsonString
  * @return {object} jsonObject
  */
-function _parseJson(jsonString) {
+export const _parseJson = (jsonString) => {
 	return jsonObject;
 }
