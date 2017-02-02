@@ -1,4 +1,5 @@
-# pathway-commons
+pathway-commons [![Build Status](https://travis-ci.org/mj3cheun/pathway-commons.svg?branch=master)](https://travis-ci.org/mj3cheun/pathway-commons)
+================
 
 
 
