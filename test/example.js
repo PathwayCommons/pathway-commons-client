@@ -1,4 +1,5 @@
-let { expect, assert } = require('chai');
+var expect = require('chai').expect;
+var assert = require('assert');
 
 describe('Example', function(){
   it('does something', function(){
