@@ -4,7 +4,7 @@
  * @version: 0.1
  */
 
-export default {
+module.exports = {
 	get: require('./get.js'),
 	getDataSources: require('./getDataSources.js'),
 	logoUrl: require('./logoUrl.js'),
