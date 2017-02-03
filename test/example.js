@@ -13,7 +13,7 @@ describe('test get module', function() {
 			new pc.get({
 				uri: 'http://pathwaycommons.org/pc2/Protein_uniprotkb_Q06609_identity_1460949191635',
 				format: 'JSONLD'
-			}).fetch((x, y) => {
+			}).fetch(function(x, y) {
 				output1 = x;
 				output2 = y;
 				done();
@@ -33,7 +33,7 @@ describe('test get module', function() {
 				.uri('http://pathwaycommons.org/pc2/Protein_uniprotkb_Q06609_identity_1460949191635')
 				.format('JSONLD')
 				.fetch()
-				.then((obj) => {
+				.then(function(obj) {
 					output = obj;
 					done();
 				});
@@ -54,7 +54,7 @@ describe('test get module', function() {
 					format: 'JSONLD'
 				})
 				.fetch()
-				.then((obj) => {
+				.then(function(obj) {
 					output = obj;
 					done();
 				});
