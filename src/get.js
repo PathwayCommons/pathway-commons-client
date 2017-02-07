@@ -1,4 +1,6 @@
-import {fetchRequest} from './private/helpers.js';
+import {Promise} from 'es6-promise';
+import {fetchRequest} from './private/fetchRequest.js';
+import {_buildUniprotUri} from './private/helpers.js';
 
  /**
  * @class
@@ -36,6 +38,15 @@ class get extends fetchRequest {
 	}
 
 	/**
+	 * Sets uri parameter using the uniprot ID
+	 * @param {string} value - uri
+	 * @returns {this}
+	 */
+	uniprot(uniprotId) {
+		return this.uri(_buildUniprotUri(uniprotId));
+	}
+
+	/**
 	 * Sets format parameter which is to be sent with the get request
 	 * @param {string} value - format
 	 * @returns {this}
@@ -46,30 +57,26 @@ class get extends fetchRequest {
 
 	/**
 	 * Initialises get and sets query object if one is provided
-	 * @return {Promise<Array>} - Promise returning an array containing status and response properties
+	 * @return {Promise<string>|Promise<object>|Promise<boolean>} - Promise returning either an object or string depending on format
 	 *
 	 *//** Initialises get and sets query object if one is provided
 	 * @param {requestCallback} [callback] - Terminating callback, see below for arguments
 	 * @return {this}
 	 */
 	fetch(callback) {
-		return super.fetch().then((responseObject) => {
+		return super.fetch().then((response) => {
 			if(callback !== undefined) {
 				/**
 				* Callback for get function, which is always called on completion
 				*
 				* @callback get~requestCallback
-				* @param {string} responseStatus - A string which indicates failure, no results returned, or success.
-				* @param {string} responseText - Response text, which is the string returned from PC if available, else empty string. Remains as string because data returned can be in multiple formats.
+				* @param {string|object|boolean} response - Response text or object returned from PC if available. Otherwise if no response returned, returns false. If there was a network failure, null returned.
 				*/
-				callback(responseObject.statusString, responseObject.response);
+				callback(response);
 				return this;
 			}
 			else {
-				return {
-					status: responseObject.statusString,
-					response: responseObject.response
-				};
+				return response;
 			}
 		});
 	}
