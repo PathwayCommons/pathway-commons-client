@@ -16,19 +16,6 @@ class dataSources extends fetchRequest {
     this.data = undefined;
     this.fetch();
 
-    // Private functions
-    this.promisifyData = () => {
-      if (this.data !== undefined) {
-        return new Promise((resolve) => {
-          resolve(this.data)
-        });
-      } else {
-        return this.fetch().then(() => {
-          return this.data
-        });
-      }
-    }
-
     return this;
   }
 
@@ -61,15 +48,33 @@ class dataSources extends fetchRequest {
   }
 
   /**
+  * Calls this.fetch if cache is not available and uses cached data if it is. Returns Promise with data in both cases. Note: While this function is meant to be private there is no way of enforcing it using ES6 JS.
+  * @private
+  * @function - _promisifyData
+  * @returns {Promise}
+  */
+  _promisifyData() {
+    if (this.data !== undefined) {
+      return new Promise((resolve) => {
+        resolve(this.data)
+      });
+    } else {
+      return this.fetch().then(() => {
+        return this.data
+      });
+    }
+  }
+
+  /**
   * Returns array of data sources from PC. Caches array for use in later calls.
   * @function - get
   * @returns {Promise<array>|Promise<boolean>} - Returns promise containing either the data source array or false if not data source not available
   */
   get(callback) {
     if (callback !== undefined) {
-      this.promisifyData().then(() => callback(this.data));
+      this._promisifyData().then(() => callback(this.data));
     } else {
-      return this.promisifyData();
+      return this._promisifyData();
     }
   }
 }
