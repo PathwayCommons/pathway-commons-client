@@ -4,11 +4,11 @@
  * @return {object|string} jsonObject - If valid JSON parse as JSON otherwise return original string
  */
 export const _parseUnknownString = (string) => {
-	try {
-		return JSON.parse(string);
-	} catch (e) {
-		return string;
-	}
+  try {
+    return JSON.parse(string);
+  } catch (e) {
+    return string;
+  }
 }
 
 /**
@@ -17,5 +17,5 @@ export const _parseUnknownString = (string) => {
  * @return {string} uniprotUri
  */
 export const _buildUniprotUri = (uniprodId) => {
-	return "http://identifiers.org/uniprot/" + uniprodId;
+  return "http://identifiers.org/uniprot/" + uniprodId;
 }
