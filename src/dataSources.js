@@ -1,7 +1,7 @@
 import {Promise} from 'es6-promise';
 import {fetchRequest} from './private/fetchRequest.js';
 
-import {isObject} from 'lodash';
+import isObject from 'lodash/isObject';
 
 /**
  * Fetches an array of datasources from PC.

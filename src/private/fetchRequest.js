@@ -1,7 +1,9 @@
 import {Promise} from 'es6-promise';
 require('isomorphic-fetch');
 
-import {isEmpty, isArray, isObject} from 'lodash';
+import isArray from 'lodash/isArray';
+import isEmpty from 'lodash/isEmpty';
+import isObject from 'lodash/isObject';
 import {stringify as queryStringify} from 'query-string';
 
 import {_parseUnknownString} from './helpers.js';
