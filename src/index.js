@@ -6,7 +6,7 @@
 
 module.exports = {
 	get: require('./get.js'),
-	getDataSources: require('./getDataSources.js'),
+	dataSources: require('./dataSources.js'),
 	logoUrl: require('./logoUrl.js'),
 	search: require('./search.js'),
 	traverse: require('./traverse.js')
