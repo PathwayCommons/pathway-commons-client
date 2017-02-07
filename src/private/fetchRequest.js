@@ -6,6 +6,8 @@ import {stringify as queryStringify} from 'query-string';
 
 import {_parseUnknownString} from './helpers.js';
 
+fetch.Promise = Promise;
+
 /**
  * @class
  * @classdesc Base class for use in fetch requests, not intended to be used on its own
