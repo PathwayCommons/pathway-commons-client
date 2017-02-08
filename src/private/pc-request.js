@@ -6,27 +6,34 @@ var isArray = require('lodash/isArray');
 var isObject = require('lodash/isObject');
 var stringify = require('query-string').stringify;
 
-var _parseUnknownString = require('./helpers.js')._parseUnknownString;
-
 /**
  * @class
- * @classdesc Base class for use in fetch requests, not intended to be used on its own
+ * @classdesc Class for use in fetch requests to Pathway Commons
  */
 module.exports = class PcRequest {
-  constructor(queryObject) {
-    this.pcUrl = "http://www.pathwaycommons.org/pc2/";
-    this.command = "TO_BE_REPLACED";
-    this.responseText = "";
-    this.queryObject = {};
-    if (queryObject !== undefined) {
-      this.queryObject = queryObject;
+  constructor(commandValue) {
+    if ((typeof commandValue !== "string") || (commandValue === "")) {
+      throw new SyntaxError("PcRequest constructor parameter invalid");
     }
+    Object.defineProperty(this, "pcUrl", {
+      get: () => {
+        return "http://www.pathwaycommons.org/pc2/";
+      }
+    });
+    Object.defineProperty(this, "command", {
+      get: () => {
+        return commandValue;
+      }
+    });
 
-    return this;
+    this.queryObject = {};
   }
 
   query(queryObject) {
-    this.queryObject = queryObject;
+    if (isObject(queryObject)) {
+      this.queryObject = queryObject;
+    }
+
     return this;
   }
 
@@ -45,36 +52,24 @@ module.exports = class PcRequest {
 
   delete(parameter) {
     delete this.queryObject[parameter];
+
+    return this;
   }
 
   fetch() {
-    var fetchPromise = fetch(this.pcUrl + this.command + "?" + stringify(this.queryObject));
-    var responseCode = fetchPromise.then((responseObject) => {
-      return responseObject;
+    var url = this.pcUrl + this.command + "?" + stringify(this.queryObject);
+
+    return fetch(url).then((res) => {
+      switch (res.status) {
+        case 200:
+          return res.headers._headers["content-type"][0].toLowerCase().indexOf("json") !== -1 ? res.json() : res.text();
+          break;
+        case 500:
+          return null;
+          break;
+        default:
+          throw new Error(res.status);
+      }
     });
-
-    var responseText = fetchPromise.then((responseObject) => {
-        return responseObject.text();
-      })
-      .then((responseString) => {
-        this.responseText = responseString;
-        return responseString;
-      });
-
-    return Promise.all([responseCode, responseText]).then((promiseArray) => {
-        switch (promiseArray[0].status) {
-          case 200:
-            return _parseUnknownString(promiseArray[1]);
-            break;
-          case 500:
-            return false;
-            break;
-          default:
-            return null;
-        }
-      })
-      .catch((error) => {
-        return null;
-      });
   }
 }

@@ -54,10 +54,4 @@ describe('test dataSources module', function() {
 			chai.assert.notEqual(output1.length, {});
 		});
 	});
-
-	describe('_promisifyData call', function() {
-		it('The promisifyData function should be accessible', function() {
-			chai.assert.typeOf(pc.dataSources._promisifyData, "function");
-		});
-	});
 });

@@ -102,9 +102,8 @@ describe('test get module', function() {
 			});
 		});
 
-		it('The get request should return an empty string', function() {
-			chai.assert.typeOf(output1, "boolean");
-			chai.assert.equal(output1, false);
+		it('The get request should return a null', function() {
+			chai.assert.equal(output1, null);
 		});
 	});
 

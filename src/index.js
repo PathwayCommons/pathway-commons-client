@@ -7,9 +7,9 @@
  */
 
 module.exports = {
-	get: require('./get.js'),
-	dataSources: new (require('./datasources.js'))(),
-	logoUrl: require('./logo-url.js'),
-	search: require('./search.js'),
-	traverse: require('./traverse.js')
+  get: require('./get.js'),
+  dataSources: new(require('./datasources.js'))(),
+  logoUrl: require('./logo-url.js'),
+  search: require('./search.js'),
+  traverse: require('./traverse.js')
 };

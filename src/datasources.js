@@ -8,26 +8,22 @@ var PcRequest = require('./private/pc-request.js');
  * Fetches an array of datasources from PC.
  * @module dataSources
  */
-class Datasources extends PcRequest {
+class Datasources {
   constructor() {
-    super({
+    this.request = new PcRequest("metadata/datasources").query({
       user: "pc2pathways"
     });
-    this.command = "metadata/datasources";
-    this.data = undefined;
-    this.fetch();
-
-    return this;
+    this.data = this.fetch();
   }
 
   /**
-  * Purges existing data source cache and makes a call to PC to re-get data sources.
-  * @function - fetch
-  */
+   * Makes a fetch request to PC requesting data sources. If called after class initialization, purges existing data source cache and makes a call to PC to re-fetch data sources.
+   * @function - fetch
+   */
   fetch() {
-    return super.fetch().then((response) => {
+    var dataPromise = this.request.fetch().then((response) => {
+      var output = {};
       if (isObject(response)) {
-        var output = {};
         response
           .filter(source => source.notPathwayData == false)
           .map((ds) => {
@@ -40,42 +36,28 @@ class Datasources extends PcRequest {
               type: ds.type
             };
           });
-        this.data = output;
       } else {
-        this.data = false;
+        output = null;
       }
-      return this.data;
+      return output;
+    }).catch(() => {
+      return null;
     });
+
+    this.data = dataPromise;
+    return dataPromise;
   }
 
   /**
-  * Calls this.fetch if cache is not available and uses cached data if it is. Returns Promise with data in both cases. Note: While this function is meant to be private there is no way of enforcing it using ES6 JS.
-  * @private
-  * @function - _promisifyData
-  * @returns {Promise}
-  */
-  _promisifyData() {
-    if (this.data !== undefined) {
-      return new Promise((resolve) => {
-        resolve(this.data)
-      });
-    } else {
-      return this.fetch().then(() => {
-        return this.data
-      });
-    }
-  }
-
-  /**
-  * Returns array of data sources from PC. Caches array for use in later calls.
-  * @function - get
-  * @returns {Promise<array>|Promise<boolean>} - Returns promise containing either the data source array or false if not data source not available
-  */
+   * Returns promise containing data sources from PC.
+   * @function - get
+   * @returns {Promise<object>} - Returns promise containing either the data source array or null if data source is not available
+   */
   get(callback) {
     if (callback !== undefined) {
-      this._promisifyData().then(() => callback(this.data));
+      this.data.then((data) => callback(data));
     } else {
-      return this._promisifyData();
+      return this.data;
     }
   }
 }

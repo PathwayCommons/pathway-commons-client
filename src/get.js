@@ -7,7 +7,7 @@ var _buildUniprotUri = require('./private/helpers.js')._buildUniprotUri;
  * @class
  * @classdesc Peforms a GET web query to the Pathway Commons web service
  */
-class Get extends PcRequest {
+class Get {
   /**
    * Initialises get and sets query object if one is provided. Chainable.
    * @constructor
@@ -15,9 +15,7 @@ class Get extends PcRequest {
    * @returns {this}
    */
   constructor(queryObject) {
-    super(queryObject);
-    this.command = "get";
-    return this;
+    this.request = new PcRequest("get").query(queryObject);
   }
 
   /**
@@ -26,7 +24,9 @@ class Get extends PcRequest {
    * @returns {this}
    */
   query(queryObject) {
-    return super.query(queryObject);
+    this.request.query(queryObject);
+
+    return this;
   }
 
   /**
@@ -35,7 +35,9 @@ class Get extends PcRequest {
    * @returns {this}
    */
   uri(value) {
-    return super.set("uri", value);
+    this.request.set("uri", value);
+
+    return this;
   }
 
   /**
@@ -44,7 +46,9 @@ class Get extends PcRequest {
    * @returns {this}
    */
   uniprot(uniprotId) {
-    return this.uri(_buildUniprotUri(uniprotId));
+    this.uri(_buildUniprotUri(uniprotId));
+
+    return this;
   }
 
   /**
@@ -53,12 +57,14 @@ class Get extends PcRequest {
    * @returns {this}
    */
   format(value) {
-    return super.set("format", value);
+    this.request.set("format", value);
+
+    return this;
   }
 
   /**
    * Initialises get and sets query object if one is provided
-   * @return {Promise<string>|Promise<object>|Promise<boolean>} - Promise returning either an object or string depending on format
+   * @return {Promise<string>|Promise<object>} - Promise returning either an object or string depending on format
    *
    */
   /** Initialises get and sets query object if one is provided
@@ -66,13 +72,13 @@ class Get extends PcRequest {
    * @return {this}
    */
   fetch(callback) {
-    return super.fetch().then((response) => {
+    return this.request.fetch().then((response) => {
       if (callback !== undefined) {
         /**
          * Callback for get function, which is always called on completion
          *
          * @callback get~requestCallback
-         * @param {string|object|boolean} response - Response text or object returned from PC if available. Otherwise if no response returned, returns false. If there was a network failure, null returned.
+         * @param {string|object} response - Response text or object returned from PC if available. Otherwise if no response returned, returns false. If there was a network failure, null returned.
          */
         callback(response);
         return this;
