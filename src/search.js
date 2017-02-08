@@ -4,7 +4,7 @@
  * @param {object} query_object - Object representing the query parameters to be sent along with the search command.
  * @param {requestCallback} callback - Terminating callback, see below for arguments.
  */
-const search = (query_object, callback) => {
+const Search = (query_object, callback) => {
 	/**
 	* Callback for search function, which is always called on completion
 	*
@@ -15,4 +15,4 @@ const search = (query_object, callback) => {
 	callback(responseStatus, responseObject);
 }
 
-export default search;
+export default Search;

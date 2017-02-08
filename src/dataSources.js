@@ -1,5 +1,5 @@
 import {Promise} from 'es6-promise';
-import {fetchRequest} from './private/fetchRequest.js';
+import {PcRequest} from './private/pc-request.js';
 
 import isObject from 'lodash/isObject';
 
@@ -7,7 +7,7 @@ import isObject from 'lodash/isObject';
  * Fetches an array of datasources from PC.
  * @module dataSources
  */
-class dataSources extends fetchRequest {
+class Datasources extends PcRequest {
   constructor() {
     super({
       user: "pc2pathways"
@@ -79,4 +79,4 @@ class dataSources extends fetchRequest {
   }
 }
 
-module.exports = new dataSources();
+module.exports = Datasources;

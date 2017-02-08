@@ -1,12 +1,12 @@
 import {Promise} from 'es6-promise';
-import {fetchRequest} from './private/fetchRequest.js';
+import {PcRequest} from './private/pc-request.js';
 import {_buildUniprotUri} from './private/helpers.js';
 
 /**
  * @class
  * @classdesc Peforms a GET web query to the Pathway Commons web service
  */
-class get extends fetchRequest {
+class Get extends PcRequest {
   /**
    * Initialises get and sets query object if one is provided. Chainable.
    * @constructor
@@ -82,4 +82,4 @@ class get extends fetchRequest {
   }
 }
 
-module.exports = get;
+module.exports = Get;

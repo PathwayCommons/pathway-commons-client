@@ -4,8 +4,8 @@
  * @param {string} logoIdentifier - Either URI or name of the data source
  * @return {string} logoUrl - URL of datasource in question, else empty string
  */
-const logoUrl = (dsUriOrName) => {
+const LogoUrl = (dsUriOrName) => {
 	return string;
 }
 
-export default logoUrl;
+export default LogoUrl;

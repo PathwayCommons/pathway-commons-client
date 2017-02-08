@@ -4,7 +4,7 @@
  * @param {object} query_object - Object representing the query parameters to be sent along with the traverse command.
  * @param {requestCallback} callback - Terminating callback, see below for arguments.
  */
-const traverse = (query_array, callback) => {
+const Traverse = (query_array, callback) => {
 	/**
 	* Callback for traverse function, which is always called on completion
 	*
@@ -15,4 +15,4 @@ const traverse = (query_array, callback) => {
 	callback(responseStatus, responseObject);
 }
 
-export default traverse;
+export default Traverse;
