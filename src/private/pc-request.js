@@ -1,18 +1,18 @@
-import {Promise} from 'es6-promise';
-require('isomorphic-fetch');
+'use strict';
 
-import isArray from 'lodash/isArray';
-import isEmpty from 'lodash/isEmpty';
-import isObject from 'lodash/isObject';
-import {stringify as queryStringify} from 'query-string';
+var fetch = require('node-fetch');
+var isEmpty = require('lodash/isEmpty');
+var isArray = require('lodash/isArray');
+var isObject = require('lodash/isObject');
+var stringify = require('query-string').stringify;
 
-import {_parseUnknownString} from './helpers.js';
+var _parseUnknownString = require('./helpers.js')._parseUnknownString;
 
 /**
  * @class
  * @classdesc Base class for use in fetch requests, not intended to be used on its own
  */
-export class PcRequest {
+module.exports = class PcRequest {
   constructor(queryObject) {
     this.pcUrl = "http://www.pathwaycommons.org/pc2/";
     this.command = "TO_BE_REPLACED";
@@ -48,7 +48,7 @@ export class PcRequest {
   }
 
   fetch() {
-    var fetchPromise = fetch(this.pcUrl + this.command + "?" + queryStringify(this.queryObject));
+    var fetchPromise = fetch(this.pcUrl + this.command + "?" + stringify(this.queryObject));
     var responseCode = fetchPromise.then((responseObject) => {
       return responseObject;
     });

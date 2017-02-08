@@ -1,10 +1,12 @@
+'use strict';
+
 /**
  * Peforms a SEARCH web query to the Pathway Commons web service
  * @module search
  * @param {object} query_object - Object representing the query parameters to be sent along with the search command.
  * @param {requestCallback} callback - Terminating callback, see below for arguments.
  */
-const Search = (query_object, callback) => {
+module.exports = (query_object, callback) => {
 	/**
 	* Callback for search function, which is always called on completion
 	*
@@ -14,5 +16,3 @@ const Search = (query_object, callback) => {
 	*/
 	callback(responseStatus, responseObject);
 }
-
-export default Search;

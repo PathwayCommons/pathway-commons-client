@@ -1,6 +1,6 @@
 var chai = require('chai');
 
-var pc = require('../build/bundle.js');
+var pc = require('../src/index.js');
 
 // Runs tests on server side on node js
 // Tests are only valid  after 'npm run build-node'
@@ -25,7 +25,6 @@ describe('test get module', function() {
 
 	describe('get call with chained uri and format functions', function() {
 		// Assume Promises supported
-		var Promise = require('es6-promise').Promise;
 		var output1;
 
 		beforeEach(function(done){
@@ -47,7 +46,6 @@ describe('test get module', function() {
 
 	describe('get call with object argument and promise fetch', function() {
 		// Assume Promises supported
-		var Promise = require('es6-promise').Promise;
 		var output1;
 
 		beforeEach(function(done){
@@ -71,7 +69,6 @@ describe('test get module', function() {
 
 	describe('get call with object argument and object format and output', function() {
 		// Assume Promises supported
-		var Promise = require('es6-promise').Promise;
 		var output1;
 
 		beforeEach(function(done){
@@ -113,7 +110,6 @@ describe('test get module', function() {
 
 	describe('get call with object argument and uniprod uri set', function() {
 		// Assume Promises supported
-		var Promise = require('es6-promise').Promise;
 		var output1;
 
 		beforeEach(function(done){

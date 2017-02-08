@@ -1,10 +1,12 @@
+'use strict';
+
 /**
  * Peforms a SEARCH web query to the Pathway Commons web service
  * @module traverse
  * @param {object} query_object - Object representing the query parameters to be sent along with the traverse command.
  * @param {requestCallback} callback - Terminating callback, see below for arguments.
  */
-const Traverse = (query_array, callback) => {
+module.exports = (query_array, callback) => {
 	/**
 	* Callback for traverse function, which is always called on completion
 	*
@@ -14,5 +16,3 @@ const Traverse = (query_array, callback) => {
 	*/
 	callback(responseStatus, responseObject);
 }
-
-export default Traverse;

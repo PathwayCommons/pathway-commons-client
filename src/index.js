@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * @fileOverview Pathway Commons Access Library Index
  * @author Manfred Cheung

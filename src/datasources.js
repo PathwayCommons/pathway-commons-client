@@ -1,7 +1,8 @@
-import {Promise} from 'es6-promise';
-import {PcRequest} from './private/pc-request.js';
+'use strict';
 
-import isObject from 'lodash/isObject';
+var isObject = require('lodash/isObject');
+
+var PcRequest = require('./private/pc-request.js');
 
 /**
  * Fetches an array of datasources from PC.

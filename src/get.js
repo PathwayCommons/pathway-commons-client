@@ -1,6 +1,7 @@
-import {Promise} from 'es6-promise';
-import {PcRequest} from './private/pc-request.js';
-import {_buildUniprotUri} from './private/helpers.js';
+'use strict';
+
+var PcRequest = require('./private/pc-request.js');
+var _buildUniprotUri = require('./private/helpers.js')._buildUniprotUri;
 
 /**
  * @class

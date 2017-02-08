@@ -1,13 +1,12 @@
 var chai = require('chai');
 
-var pc = require('../build/bundle.js');
+var pc = require('../src/index.js');
 
 // Runs tests on server side on node js
 // Tests are only valid  after 'npm run build-node'
 describe('test dataSources module', function() {
 	describe('get call using promises', function() {
 		// Assume Promises supported
-		var Promise = require('es6-promise').Promise;
 		var output1;
 
 		beforeEach(function(done){
@@ -41,7 +40,6 @@ describe('test dataSources module', function() {
 
 	describe('fetch call using promises', function() {
 		// Assume Promises supported
-		var Promise = require('es6-promise').Promise;
 		var output1;
 
 		beforeEach(function(done){
