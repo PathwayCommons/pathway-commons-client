@@ -5,7 +5,7 @@ pathway-commons [![Build Status](https://travis-ci.org/mj3cheun/pathway-commons.
 
 ## Required software
 
-- [Node.js](https://nodejs.org/en/) >=6.3.0
+- [Node.js](https://nodejs.org/en/) >=4.0.0. In order to support earlier versions, compile for node and add polyfills for missing features (etc. Promises).
 
 
 
