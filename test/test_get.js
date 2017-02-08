@@ -9,7 +9,7 @@ describe('test get module', function() {
 		var output1;
 
 		beforeEach(function(done){
-			new pc.get({
+			pc.get({
 				uri: 'http://pathwaycommons.org/pc2/Protein_uniprotkb_Q06609_identity_1460949191635'
 			}).fetch(function(x) {
 				output1 = x;
@@ -28,7 +28,7 @@ describe('test get module', function() {
 		var output1;
 
 		beforeEach(function(done){
-			new pc.get()
+			pc.get()
 				.uri('http://pathwaycommons.org/pc2/Protein_uniprotkb_Q06609_identity_1460949191635')
 				.format('SBGN')
 				.fetch()
@@ -49,7 +49,7 @@ describe('test get module', function() {
 		var output1;
 
 		beforeEach(function(done){
-			new pc.get()
+			pc.get()
 				.query({
 					uri: 'http://pathwaycommons.org/pc2/Protein_uniprotkb_Q06609_identity_1460949191635',
 					format: 'SBGN'
@@ -72,7 +72,7 @@ describe('test get module', function() {
 		var output1;
 
 		beforeEach(function(done){
-			new pc.get()
+			pc.get()
 				.query({
 					uri: 'http://pathwaycommons.org/pc2/Protein_uniprotkb_Q06609_identity_1460949191635',
 					format: 'JSONLD'
@@ -93,7 +93,7 @@ describe('test get module', function() {
 		var output1;
 
 		beforeEach(function(done){
-			new pc.get({
+			pc.get({
 				uri: 'iiiiiiiiiiiiiiiiiiiiiiiii',
 				format: 'JSONLD'
 			}).fetch(function(x) {
@@ -112,7 +112,7 @@ describe('test get module', function() {
 		var output1;
 
 		beforeEach(function(done){
-			new pc.get()
+			pc.get()
 				.uniprot("Q06609")
 				.fetch()
 				.then(function(str) {

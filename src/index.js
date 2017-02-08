@@ -7,7 +7,7 @@
  */
 
 module.exports = {
-  get: require('./get.js'),
+  get: ((queryObject) => new(require('./get.js'))(queryObject)),
   dataSources: new(require('./datasources.js'))(),
   logoUrl: require('./logo-url.js'),
   search: require('./search.js'),

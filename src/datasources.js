@@ -8,7 +8,7 @@ var PcRequest = require('./private/pc-request.js');
  * Fetches an array of datasources from PC.
  * @module dataSources
  */
-class Datasources {
+module.exports = class Datasources {
   constructor() {
     this.request = new PcRequest("metadata/datasources").query({
       user: "pc2pathways"
@@ -61,5 +61,3 @@ class Datasources {
     }
   }
 }
-
-module.exports = Datasources;

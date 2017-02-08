@@ -7,7 +7,7 @@ var _buildUniprotUri = require('./private/helpers.js')._buildUniprotUri;
  * @class
  * @classdesc Peforms a GET web query to the Pathway Commons web service
  */
-class Get {
+module.exports = class Get {
   /**
    * Initialises get and sets query object if one is provided. Chainable.
    * @constructor
@@ -65,7 +65,6 @@ class Get {
   /**
    * Initialises get and sets query object if one is provided
    * @return {Promise<string>|Promise<object>} - Promise returning either an object or string depending on format
-   *
    */
   /** Initialises get and sets query object if one is provided
    * @param {requestCallback} [callback] - Terminating callback, see below for arguments
@@ -88,5 +87,3 @@ class Get {
     });
   }
 }
-
-module.exports = Get;
