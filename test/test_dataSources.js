@@ -22,22 +22,6 @@ describe('test datasources module', function() {
 		});
 	});
 
-	describe('get call using callback', function() {
-		var output1;
-
-		beforeEach(function(done){
-			pc.datasources.get(function(x) {
-				output1 = x;
-				done();
-			});
-		});
-
-		it('The get request should return a non-empty array', function() {
-			chai.assert.typeOf(output1, "object");
-			chai.assert.notEqual(output1.length, {});
-		});
-	});
-
 	describe('fetch call using promises', function() {
 		// Assume Promises supported
 		var output1;

@@ -54,24 +54,7 @@ module.exports = class Get {
    * Initialises get and sets query object if one is provided
    * @return {Promise<string>|Promise<object>} - Promise returning either an object or string depending on format
    */
-  /** Initialises get and sets query object if one is provided
-   * @param {requestCallback} [callback] - Terminating callback, see below for arguments
-   * @return {this}
-   */
-  fetch(callback) {
-    return this.request.fetch().then((response) => {
-      if (callback !== undefined) {
-        /**
-         * Callback for get function, which is always called on completion
-         *
-         * @callback get~requestCallback
-         * @param {string|object} response - Response text or object returned from PC if available. Otherwise if no response returned, returns false. If there was a network failure, null returned.
-         */
-        callback(response);
-        return this;
-      } else {
-        return response;
-      }
-    });
+  fetch() {
+    return this.request.fetch();
   }
 }

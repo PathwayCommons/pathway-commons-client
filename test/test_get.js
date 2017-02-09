@@ -9,12 +9,13 @@ describe('test get module', function() {
 		var output1;
 
 		beforeEach(function(done){
-			pc.get("unit-test").query({
-				uri: 'http://identifiers.org/reactome/R-HSA-201451'
-			}).fetch(function(x) {
-				output1 = x;
-				done();
-			});
+			pc.get("unit-test")
+				.query({uri: 'http://identifiers.org/reactome/R-HSA-201451'})
+				.fetch()
+				.then(function(x) {
+					output1 = x;
+					done();
+				});
 		});
 
 		it('The get request should return a non-empty string', function() {
@@ -93,13 +94,16 @@ describe('test get module', function() {
 		var output1;
 
 		beforeEach(function(done){
-			pc.get("unit-test").query({
-				uri: 'iiiiiiiiiiiiiiiiiiiiiiiii',
-				format: 'JSONLD'
-			}).fetch(function(x) {
-				output1 = x;
-				done();
-			});
+			pc.get("unit-test")
+				.query({
+					uri: 'iiiiiiiiiiiiiiiiiiiiiiiii',
+					format: 'JSONLD'
+				})
+				.fetch()
+				.then(function(x) {
+					output1 = x;
+					done();
+				});
 		});
 
 		it('The get request should return a null', function() {

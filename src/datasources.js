@@ -52,10 +52,6 @@ module.exports = class Datasources {
    * @returns {Promise<object>} - Returns promise containing either the data source array or null if data source is not available
    */
   get(callback) {
-    if (callback !== undefined) {
-      this.data.then((data) => callback(data));
-    } else {
-      return this.data;
-    }
+    return this.data;
   }
 }
