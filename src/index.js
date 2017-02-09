@@ -7,9 +7,10 @@
  */
 
 module.exports = {
-  get: ((queryObject) => new(require('./get.js'))(queryObject)),
-  dataSources: new(require('./datasources.js'))(),
+  get: ((user) => new(require('./get.js'))(user)),
+  datasources: new(require('./datasources.js'))(),
   logoUrl: require('./logo-url.js'),
   search: require('./search.js'),
-  traverse: require('./traverse.js')
+  traverse: require('./traverse.js'),
+  graph: ((user) => new(require('./graph.js'))(user))
 };

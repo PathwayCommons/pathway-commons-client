@@ -4,13 +4,13 @@ var pc = require('../src/index.js');
 
 // Runs tests on server side on node js
 // Tests are only valid  after 'npm run build-node'
-describe('test dataSources module', function() {
+describe('test datasources module', function() {
 	describe('get call using promises', function() {
 		// Assume Promises supported
 		var output1;
 
 		beforeEach(function(done){
-			pc.dataSources.get().then(function(x) {
+			pc.datasources.get().then(function(x) {
 				output1 = x;
 				done();
 			});
@@ -26,7 +26,7 @@ describe('test dataSources module', function() {
 		var output1;
 
 		beforeEach(function(done){
-			pc.dataSources.get(function(x) {
+			pc.datasources.get(function(x) {
 				output1 = x;
 				done();
 			});
@@ -43,7 +43,7 @@ describe('test dataSources module', function() {
 		var output1;
 
 		beforeEach(function(done){
-			pc.dataSources.fetch().then(function(x) {
+			pc.datasources.fetch().then(function(x) {
 				output1 = x;
 				done();
 			});

@@ -9,8 +9,8 @@ describe('test get module', function() {
 		var output1;
 
 		beforeEach(function(done){
-			pc.get({
-				uri: 'http://pathwaycommons.org/pc2/Protein_uniprotkb_Q06609_identity_1460949191635'
+			pc.get("unit-test").query({
+				uri: 'http://identifiers.org/reactome/R-HSA-201451'
 			}).fetch(function(x) {
 				output1 = x;
 				done();
@@ -28,8 +28,8 @@ describe('test get module', function() {
 		var output1;
 
 		beforeEach(function(done){
-			pc.get()
-				.uri('http://pathwaycommons.org/pc2/Protein_uniprotkb_Q06609_identity_1460949191635')
+			pc.get("unit-test")
+				.uri('http://identifiers.org/reactome/R-HSA-201451')
 				.format('SBGN')
 				.fetch()
 				.then(function(str) {
@@ -49,9 +49,9 @@ describe('test get module', function() {
 		var output1;
 
 		beforeEach(function(done){
-			pc.get()
+			pc.get("unit-test")
 				.query({
-					uri: 'http://pathwaycommons.org/pc2/Protein_uniprotkb_Q06609_identity_1460949191635',
+					uri: 'http://identifiers.org/reactome/R-HSA-201451',
 					format: 'SBGN'
 				})
 				.fetch()
@@ -72,9 +72,9 @@ describe('test get module', function() {
 		var output1;
 
 		beforeEach(function(done){
-			pc.get()
+			pc.get("unit-test")
 				.query({
-					uri: 'http://pathwaycommons.org/pc2/Protein_uniprotkb_Q06609_identity_1460949191635',
+					uri: 'http://identifiers.org/reactome/R-HSA-201451',
 					format: 'JSONLD'
 				})
 				.fetch()
@@ -93,7 +93,7 @@ describe('test get module', function() {
 		var output1;
 
 		beforeEach(function(done){
-			pc.get({
+			pc.get("unit-test").query({
 				uri: 'iiiiiiiiiiiiiiiiiiiiiiiii',
 				format: 'JSONLD'
 			}).fetch(function(x) {
@@ -104,26 +104,6 @@ describe('test get module', function() {
 
 		it('The get request should return a null', function() {
 			chai.assert.equal(output1, null);
-		});
-	});
-
-	describe('get call with object argument and uniprod uri set', function() {
-		// Assume Promises supported
-		var output1;
-
-		beforeEach(function(done){
-			pc.get()
-				.uniprot("Q06609")
-				.fetch()
-				.then(function(str) {
-					output1 = str;
-					done();
-				});
-		});
-
-		it('The get request should return a non-empty string', function() {
-			chai.assert.typeOf(output1, "string");
-			chai.assert.isAbove(output1.length, 1);
 		});
 	});
 });

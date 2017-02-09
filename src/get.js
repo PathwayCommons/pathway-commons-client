@@ -1,7 +1,6 @@
 'use strict';
 
 var PcRequest = require('./private/pc-request.js');
-var _buildUniprotUri = require('./private/helpers.js')._buildUniprotUri;
 
 /**
  * @class
@@ -14,8 +13,8 @@ module.exports = class Get {
    * @param {object} [queryObject] - Object representing the query parameters to be sent along with the get command.
    * @returns {this}
    */
-  constructor(queryObject) {
-    this.request = new PcRequest("get").query(queryObject);
+  constructor(user) {
+    this.request = new PcRequest("HI", "get");
   }
 
   /**
@@ -36,17 +35,6 @@ module.exports = class Get {
    */
   uri(value) {
     this.request.set("uri", value);
-
-    return this;
-  }
-
-  /**
-   * Sets uri parameter using the uniprot ID
-   * @param {string} value - uri
-   * @returns {this}
-   */
-  uniprot(uniprotId) {
-    this.uri(_buildUniprotUri(uniprotId));
 
     return this;
   }

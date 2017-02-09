@@ -10,9 +10,7 @@ var PcRequest = require('./private/pc-request.js');
  */
 module.exports = class Datasources {
   constructor() {
-    this.request = new PcRequest("metadata/datasources").query({
-      user: "pc2pathways"
-    });
+    this.request = new PcRequest("datasource", "metadata/datasources");
     this.data = this.fetch();
   }
 
