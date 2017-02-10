@@ -1,4 +1,4 @@
-pathway-commons [![Build Status](https://travis-ci.org/mj3cheun/pathway-commons.svg?branch=master)](https://travis-ci.org/mj3cheun/pathway-commons)
+Pathway Commons JS Library [![Build Status](https://travis-ci.org/mj3cheun/pathway-commons.svg?branch=master)](https://travis-ci.org/mj3cheun/pathway-commons)
 ================
 
 
