@@ -6,7 +6,7 @@ module.exports = {
    * @param {string} string - String to be checked
    * @return {boolean} Returns true if input is a non-empty string else returns false
    */
-  _validateString: (string) => {
+  validateString: (string) => {
     if ((typeof string === "string") && (string.length !== 0)) {
       return true;
     } else {
@@ -19,7 +19,7 @@ module.exports = {
    * @param {string} uniprotId
    * @return {boolean} idValidity
    */
-  _uniprotCheck: (uniprodId) => {
+  uniprotCheck: (uniprodId) => {
     return /^([A-N,R-Z][0-9]([A-Z][A-Z, 0-9][A-Z, 0-9][0-9]){1,2})|([O,P,Q][0-9][A-Z, 0-9][A-Z, 0-9][A-Z, 0-9][0-9])(\.\d+)?$/.test(uniprodId);
   },
 
@@ -28,7 +28,7 @@ module.exports = {
    * @param {string} chebiId
    * @return {boolean} idValidity
    */
-  _chebiCheck: (chebiId) => {
+  chebiCheck: (chebiId) => {
     return /^CHEBI:\d+$/.test(chebiId) && (chebiId.length <= ("CHEBI:".length + 6));
   },
 
@@ -37,7 +37,7 @@ module.exports = {
    * @param {string} hgncId
    * @return {boolean} idValidity
    */
-  _hgncCheck: (hgncId) => {
+  hgncCheck: (hgncId) => {
     return /^[A-Za-z-0-9_]+(\@)?$/.test(hgncId);
   }
 }

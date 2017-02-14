@@ -6,7 +6,7 @@ var isArray = require('lodash/isArray');
 var isObject = require('lodash/isObject');
 var stringify = require('query-string').stringify;
 
-var _validateString = require('./helpers.js')._validateString;
+var validateString = require('./helpers.js').validateString;
 
 /**
  * @class
@@ -14,7 +14,7 @@ var _validateString = require('./helpers.js')._validateString;
  */
 module.exports = class PcRequest {
   constructor(user, commandValue) {
-    if (!(_validateString(user) && _validateString(commandValue))) {
+    if (!(validateString(user) && validateString(commandValue))) {
       throw new SyntaxError("PcRequest constructor parameter invalid");
     }
     Object.defineProperty(this, "pcUrl", {
