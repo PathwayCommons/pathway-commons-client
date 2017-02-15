@@ -35,6 +35,7 @@ module.exports = class PcRequest {
     });
 
     this.queryObject = {};
+    this.formatString = "";
   }
 
   query(queryObject) {
@@ -64,8 +65,22 @@ module.exports = class PcRequest {
     return this;
   }
 
+  format(formatString) {
+    const acceptedStrings = [
+      "json",
+      "xml",
+      ""
+    ];
+
+    if(acceptedStrings.indexOf(formatString) !== -1) {
+      this.formatString = formatString;
+    }
+
+    return this;
+  }
+
   fetch() {
-    var url = this.pcUrl + this.command + "?" + stringify(Object.assign({}, this.queryObject, this.submitId ? {
+    var url = this.pcUrl + this.command + (this.formatString ? "." + this.formatString : "") + "?" + stringify(Object.assign({}, this.queryObject, this.submitId ? {
       user: user.id()
     } : {}));
 

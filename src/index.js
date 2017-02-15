@@ -8,10 +8,10 @@
 
 module.exports = {
   user: require('./user.js'),
-  get: ((user) => new(require('./get.js'))(user)),
   datasources: new(require('./datasources.js'))(),
+  get: (() => new(require('./get.js'))()),
+  search: (() => new(require('./search.js'))()),
   logoUrl: require('./logo-url.js'),
-  search: require('./search.js'),
   traverse: require('./traverse.js'),
   graph: ((user) => new(require('./graph.js'))(user))
 };

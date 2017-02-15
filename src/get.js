@@ -4,7 +4,7 @@ var PcRequest = require('./private/pc-request.js');
 
 /**
  * @class
- * @classdesc Peforms a GET web query to the Pathway Commons web service
+ * @classdesc Peforms a get web query to the Pathway Commons web service
  */
 module.exports = class Get {
   /**
