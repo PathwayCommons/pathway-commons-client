@@ -19,7 +19,7 @@
     "predocument": "gulp clean-docs",
     "document": "jsdoc ./src -d ./docs",
     "postdocument": "open docs/index.html",
-    "test": "mocha",
+    "test": "mocha --timeout 5000",
     "build": "gulp build",
     "build-prod": "gulp build-prod",
     "build-node": "browserify --standalone pathway-commons -e src/index.js -o build/bundle.js -d -t [ babelify --comments false ] --node",
