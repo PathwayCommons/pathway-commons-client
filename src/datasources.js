@@ -10,7 +10,7 @@ var PcRequest = require('./private/pc-request.js');
  */
 module.exports = class Datasources {
   constructor() {
-    this.request = new PcRequest("datasource", "metadata/datasources");
+    this.request = new PcRequest("metadata/datasources", false);
     this.data = this.fetch();
   }
 

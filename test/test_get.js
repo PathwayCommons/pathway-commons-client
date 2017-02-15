@@ -2,6 +2,9 @@ var chai = require('chai');
 
 var pc = require('../src/index.js');
 
+// Sets user id as unit-test
+pc.user.id("unit-test");
+
 // Runs tests on server side on node js
 // Tests are only valid  after 'npm run build-node'
 describe('test get module', function() {
@@ -9,7 +12,7 @@ describe('test get module', function() {
 		var output1;
 
 		beforeEach(function(done){
-			pc.get("unit-test")
+			pc.get()
 				.query({uri: 'http://identifiers.org/reactome/R-HSA-201451'})
 				.fetch()
 				.then(function(x) {
@@ -29,7 +32,7 @@ describe('test get module', function() {
 		var output1;
 
 		beforeEach(function(done){
-			pc.get("unit-test")
+			pc.get()
 				.uri('http://identifiers.org/reactome/R-HSA-201451')
 				.format('SBGN')
 				.fetch()
@@ -50,7 +53,7 @@ describe('test get module', function() {
 		var output1;
 
 		beforeEach(function(done){
-			pc.get("unit-test")
+			pc.get()
 				.query({
 					uri: 'http://identifiers.org/reactome/R-HSA-201451',
 					format: 'SBGN'
@@ -73,7 +76,7 @@ describe('test get module', function() {
 		var output1;
 
 		beforeEach(function(done){
-			pc.get("unit-test")
+			pc.get()
 				.query({
 					uri: 'http://identifiers.org/reactome/R-HSA-201451',
 					format: 'JSONLD'
@@ -94,7 +97,7 @@ describe('test get module', function() {
 		var output1;
 
 		beforeEach(function(done){
-			pc.get("unit-test")
+			pc.get()
 				.query({
 					uri: 'iiiiiiiiiiiiiiiiiiiiiiiii',
 					format: 'JSONLD'

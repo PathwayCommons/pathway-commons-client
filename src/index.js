@@ -7,6 +7,7 @@
  */
 
 module.exports = {
+  user: require('./user.js'),
   get: ((user) => new(require('./get.js'))(user)),
   datasources: new(require('./datasources.js'))(),
   logoUrl: require('./logo-url.js'),

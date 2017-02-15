@@ -32,6 +32,7 @@
     "lodash": "^4.17.4",
     "node-fetch": "^1.6.3",
     "query-string": "^4.3.1",
+    "uuid": "^3.0.1",
     "whatwg-fetch": "^2.0.2"
   },
   "devDependencies": {

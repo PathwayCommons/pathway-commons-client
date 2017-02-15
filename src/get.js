@@ -13,8 +13,8 @@ module.exports = class Get {
    * @param {object} [queryObject] - Object representing the query parameters to be sent along with the get command.
    * @returns {this}
    */
-  constructor(user) {
-    this.request = new PcRequest("HI", "get");
+  constructor() {
+    this.request = new PcRequest("get");
   }
 
   /**

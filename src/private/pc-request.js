@@ -6,6 +6,7 @@ var isArray = require('lodash/isArray');
 var isObject = require('lodash/isObject');
 var stringify = require('query-string').stringify;
 
+var user = require('../user.js');
 var validateString = require('./helpers.js').validateString;
 
 /**
@@ -13,8 +14,8 @@ var validateString = require('./helpers.js').validateString;
  * @classdesc Class for use in fetch requests to Pathway Commons
  */
 module.exports = class PcRequest {
-  constructor(user, commandValue) {
-    if (!(validateString(user) && validateString(commandValue))) {
+  constructor(commandValue, submitId) {
+    if (!(validateString(commandValue))) {
       throw new SyntaxError("PcRequest constructor parameter invalid");
     }
     Object.defineProperty(this, "pcUrl", {
@@ -22,9 +23,9 @@ module.exports = class PcRequest {
         return "http://www.pathwaycommons.org/pc2/";
       }
     });
-    Object.defineProperty(this, "user", {
+    Object.defineProperty(this, "submitId", {
       get: () => {
-        return "pathwaycommons-js-lib:" + user;
+        return (submitId === false) ? false : true;
       }
     });
     Object.defineProperty(this, "command", {
@@ -64,9 +65,9 @@ module.exports = class PcRequest {
   }
 
   fetch() {
-    var url = this.pcUrl + this.command + "?" + stringify(Object.assign({}, this.queryObject, {
-      user: this.user
-    }));
+    var url = this.pcUrl + this.command + "?" + stringify(Object.assign({}, this.queryObject, this.submitId ? {
+      user: user.id()
+    } : {}));
 
     return fetch(url).then((res) => {
       switch (res.status) {
