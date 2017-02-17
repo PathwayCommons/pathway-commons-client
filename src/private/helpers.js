@@ -1,4 +1,5 @@
 'use strict';
+var constants = require('./constants.js');
 
 module.exports = {
   /**
@@ -11,6 +12,34 @@ module.exports = {
       return true;
     } else {
       return false;
+    }
+  },
+
+  /**
+   * @private
+   * @param {string} string - String to be checked
+   * @return {boolean} Returns true if string exists in pc2Formats array else returns false
+   */
+  validateWithConstArray: (constArrayName, string) => {
+    if ((typeof string === "string") && (constants[constArrayName].indexOf(string) !== -1)) {
+      return true;
+    } else {
+      return false;
+    }
+  },
+
+  /**
+   * @private
+   * @param {string} sourceName
+   * @param {string} id
+   * @return {boolean} idValidity
+   */
+  sourceCheck: (sourceName, id) => {
+    var checkFunction = module.exports[sourceName.toLowerCase() + "Check"];
+    if ((typeof checkFunction === "function") && (sourceName !== "source")) {
+      checkFunction(id);
+    } else {
+      throw new SyntaxError(sourceName + " is an invalid source");
     }
   },
 

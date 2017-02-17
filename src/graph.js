@@ -1,13 +1,11 @@
 'use strict';
 
 var PcRequest = require('./private/pc-request.js');
-var _uniprotCheck = require('./private/helpers.js')._uniprotCheck;
-var _chebiCheck = require('./private/helpers.js')._chebiCheck;
-var _hgncCheck = require('./private/helpers.js')._hgncCheck;
+var sourceCheck = require('./private/helpers.js').sourceCheck;
 
 /**
  * @class
- * @classdesc Peforms a GET web query to the Pathway Commons web service
+ * @classdesc Peforms a graph web query to the Pathway Commons web service
  */
 module.exports = class Graph {
   /**
@@ -16,54 +14,113 @@ module.exports = class Graph {
    * @param {object} [queryObject] - Object representing the query parameters to be sent along with the get command.
    * @returns {this}
    */
-  constructor(queryObject) {
-    this.request = new PcRequest("graph").query(queryObject);
+  constructor() {
+    this.request = new PcRequest("graph");
   }
 
   /**
-   * Sets uri parameter using the uniprot ID with regex ID format checking
-   * @param {string} value - uri
+   * Sets kind parameter which is to be sent with the graph request
+   * @param {string} value - kind
    * @returns {this}
    */
-  uniprot(uniprotId) {
-    uniprotId = uniprotId.toUpperCase();
-    if (_uniprotCheck(uniprotId)) {
-      this.uri(uniprotId);
+  kind(value) {
+    this.request.set("kind", value);
+
+    return this;
+  }
+
+  /**
+   * Sets source parameter which is to be sent with the graph request
+   * @param {string|array} value - source
+   * @returns {this}
+   */
+  source(value, datasource) {
+    if (datasource === undefined || sourceCheck(datasource, value)) {
+      this.request.set("source", value);
     } else {
-      throw new SyntaxError("Invalid UniProt ID");
+      throw new SyntaxError(value + " is an invalid " + datasource.toUpperCase() + " ID");
     }
 
     return this;
   }
 
   /**
-   * Sets uri parameter using the ChEBI ID with regex ID format checking
-   * @param {string} value - uri
+   * Sets target parameter which is to be sent with the graph request
+   * @param {string|array} value - target
    * @returns {this}
    */
-  chebi(chebiId) {
-    chebiId = chebiId.toUpperCase();
-    if (_chebiCheck(chebiId)) {
-      this.uri(chebiId);
+  target(value, datasource) {
+    if (datasource !== undefined) {
+      this.request.set("target", value);
     } else {
-      throw new SyntaxError("Invalid ChEBI ID");
+      sourceCheck(datasource, value) ? this.request.set("target", value) : () => {
+        throw new SyntaxError(value + " invalid " + datasource)
+      };
     }
 
     return this;
   }
 
   /**
-   * Sets uri parameter using the HGNC ID with regex ID format checking
-   * @param {string} value - uri
+   * Sets direction parameter which is to be sent with the graph request
+   * @param {string} value - direction
    * @returns {this}
    */
-  hgnc(hgncId) {
-    if (_hgncCheck(hgncId)) {
-      this.uri(hgncId);
-    } else {
-      throw new SyntaxError("Invalid HGNC Symbol ID");
-    }
+  direction(value) {
+    this.request.set("direction", value);
 
     return this;
+  }
+
+  /**
+   * Sets limit parameter which is to be sent with the graph request
+   * @param {number} value - limit
+   * @returns {this}
+   */
+  limit(value) {
+    this.request.set("limit", value);
+
+    return this;
+  }
+
+  /**
+   * Sets format parameter which is to be sent with the graph request
+   * @param {string} value - format
+   * @returns {this}
+   */
+  format(value) {
+    this.request.set("format", value);
+
+    return this;
+  }
+
+  /**
+   * Sets datasource parameter which is to be sent with the graph request
+   * @param {string|array} value - datasource
+   * @returns {this}
+   */
+  datasource(value) {
+    this.request.set("datasource", value);
+
+    return this;
+  }
+
+  /**
+   * Sets organism parameter which is to be sent with the graph request
+   * @param {string} value - organism
+   * @returns {this}
+   */
+  organism(value) {
+    this.request.set("organism", value);
+
+    return this;
+  }
+
+  /**
+   * Makes a fetch call to the PC API and return results
+   * @return {Promise<string>|Promise<object>} - Promise returning either an object or string depending on response headers
+   */
+  fetch() {
+    return this.request.fetch();
   }
 }
