@@ -5,12 +5,12 @@ var PcRequest = require('./private/pc-request.js');
 /**
  * @class
  * @classdesc Peforms a get web query to the Pathway Commons web service
+ * @alias get
  */
 module.exports = class Get {
   /**
-   * Initialises get and sets query object if one is provided. Chainable.
+   * Initialises get. Chainable.
    * @constructor
-   * @param {object} [queryObject] - Object representing the query parameters to be sent along with the get command.
    * @returns {this}
    */
   constructor() {
@@ -19,6 +19,7 @@ module.exports = class Get {
 
   /**
    * Sets uri parameter which is to be sent with the get request
+   * @method get#query
    * @param {object} queryObject - Object representing the query parameters to be sent along with the get command.
    * @returns {this}
    */
@@ -30,6 +31,7 @@ module.exports = class Get {
 
   /**
    * Sets uri parameter which is to be sent with the get request
+   * @method get#uri
    * @param {string} value - uri
    * @returns {this}
    */
@@ -41,6 +43,7 @@ module.exports = class Get {
 
   /**
    * Sets format parameter which is to be sent with the get request
+   * @method get#format
    * @param {string} value - format
    * @returns {this}
    */
@@ -52,6 +55,7 @@ module.exports = class Get {
 
   /**
    * Initialises get and sets query object if one is provided
+   * @method get#fetch
    * @return {Promise<string>|Promise<object>} - Promise returning either an object or string depending on format
    */
   fetch() {

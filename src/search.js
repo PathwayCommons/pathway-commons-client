@@ -5,6 +5,7 @@ var PcRequest = require('./private/pc-request.js');
 /**
  * @class
  * @classdesc Peforms a search web query to the Pathway Commons web service
+ * @alias search
  */
 module.exports = class Search {
   /**
@@ -19,6 +20,7 @@ module.exports = class Search {
 
   /**
    * Sets uri parameter which is to be sent with the get request
+   * @method search#query
    * @param {object} queryObject - Object representing the query parameters to be sent along with the get command.
    * @returns {this}
    */
@@ -30,6 +32,7 @@ module.exports = class Search {
 
   /**
    * Sets q parameter which is to be sent with the search request
+   * @method search#q
    * @param {string} value - uri
    * @returns {this}
    */
@@ -41,6 +44,7 @@ module.exports = class Search {
 
   /**
    * Sets page parameter which is to be sent with the search request
+   * @method search#page
    * @param {string} value - page
    * @returns {this}
    */
@@ -52,6 +56,7 @@ module.exports = class Search {
 
   /**
    * Sets datasource parameter which is to be sent with the search request
+   * @method search#datasource
    * @param {string|array} value - datasource
    * @returns {this}
    */
@@ -63,6 +68,7 @@ module.exports = class Search {
 
   /**
    * Sets organism parameter which is to be sent with the search request
+   * @method search#organism
    * @param {string} value - organism
    * @returns {this}
    */
@@ -74,6 +80,7 @@ module.exports = class Search {
 
   /**
    * Sets type parameter which is to be sent with the search request
+   * @method search#type
    * @param {string} value - type
    * @returns {this}
    */
@@ -83,6 +90,12 @@ module.exports = class Search {
     return this;
   }
 
+  /**
+   * Sets format of returned data
+   * @method search#format
+   * @param {string} formatString
+   * @returns {this}
+   */
   format(formatString) {
     this.request.format(formatString);
 
@@ -91,6 +104,7 @@ module.exports = class Search {
 
   /**
    * Initialises get and sets query object if one is provided
+   * @method search#fetch
    * @return {Promise<string>|Promise<object>} - Promise returning either an object or string depending on format
    */
   fetch() {

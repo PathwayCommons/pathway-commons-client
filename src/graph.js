@@ -6,12 +6,12 @@ var sourceCheck = require('./private/helpers.js').sourceCheck;
 /**
  * @class
  * @classdesc Peforms a graph web query to the Pathway Commons web service
+ * @alias graph
  */
 module.exports = class Graph {
   /**
-   * Initialises get and sets query object if one is provided. Chainable.
+   * Initialises get. Chainable.
    * @constructor
-   * @param {object} [queryObject] - Object representing the query parameters to be sent along with the get command.
    * @returns {this}
    */
   constructor() {
@@ -20,6 +20,7 @@ module.exports = class Graph {
 
   /**
    * Sets kind parameter which is to be sent with the graph request
+   * @method graph#kind
    * @param {string} value - kind
    * @returns {this}
    */
@@ -31,6 +32,7 @@ module.exports = class Graph {
 
   /**
    * Sets source parameter which is to be sent with the graph request
+   * @method graph#source
    * @param {string|array} value - source
    * @returns {this}
    */
@@ -46,6 +48,7 @@ module.exports = class Graph {
 
   /**
    * Sets target parameter which is to be sent with the graph request
+   * @method graph#target
    * @param {string|array} value - target
    * @returns {this}
    */
@@ -63,6 +66,7 @@ module.exports = class Graph {
 
   /**
    * Sets direction parameter which is to be sent with the graph request
+   * @method graph#direction
    * @param {string} value - direction
    * @returns {this}
    */
@@ -74,6 +78,7 @@ module.exports = class Graph {
 
   /**
    * Sets limit parameter which is to be sent with the graph request
+   * @method graph#limit
    * @param {number} value - limit
    * @returns {this}
    */
@@ -85,6 +90,7 @@ module.exports = class Graph {
 
   /**
    * Sets format parameter which is to be sent with the graph request
+   * @method graph#format
    * @param {string} value - format
    * @returns {this}
    */
@@ -96,6 +102,7 @@ module.exports = class Graph {
 
   /**
    * Sets datasource parameter which is to be sent with the graph request
+   * @method graph#datasource
    * @param {string|array} value - datasource
    * @returns {this}
    */
@@ -107,6 +114,7 @@ module.exports = class Graph {
 
   /**
    * Sets organism parameter which is to be sent with the graph request
+   * @method graph#organism
    * @param {string} value - organism
    * @returns {this}
    */
@@ -118,6 +126,7 @@ module.exports = class Graph {
 
   /**
    * Makes a fetch call to the PC API and return results
+   * @method graph#fetch
    * @return {Promise<string>|Promise<object>} - Promise returning either an object or string depending on response headers
    */
   fetch() {

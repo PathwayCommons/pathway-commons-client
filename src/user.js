@@ -3,11 +3,6 @@
 var uuidV4 = require('uuid/v4');
 var validateString = require('./private/helpers.js').validateString;
 
-/**
- * @class
- * @classdesc Class to generate and store user information
- */
-
 const idPrefix = "pathwaycommons-js-lib:";
 
 var _id = new WeakMap();
