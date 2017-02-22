@@ -11,6 +11,6 @@ module.exports = {
   datasources: new(require('./datasources.js'))(),
   get: (() => new(require('./get.js'))()),
   search: (() => new(require('./search.js'))()),
-  traverse: require('./traverse.js'),
+  traverse: (() => new(require('./traverse.js'))()),
   graph: (() => new(require('./graph.js'))())
 };
