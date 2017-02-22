@@ -12,6 +12,5 @@ module.exports = {
   get: (() => new(require('./get.js'))()),
   search: (() => new(require('./search.js'))()),
   traverse: require('./traverse.js'),
-  graph: (() => new(require('./graph.js'))()),
-  logoUrl: require('./logo-url.js')
+  graph: (() => new(require('./graph.js'))())
 };
