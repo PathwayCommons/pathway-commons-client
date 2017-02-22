@@ -54,7 +54,7 @@ module.exports = class Get {
   }
 
   /**
-   * Initialises get and sets query object if one is provided
+   * Makes a fetch call to the PC API and return results
    * @method get#fetch
    * @return {Promise<string>|Promise<object>} - Promise returning either an object or string depending on format
    */

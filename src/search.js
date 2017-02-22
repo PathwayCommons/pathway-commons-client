@@ -103,7 +103,7 @@ module.exports = class Search {
   }
 
   /**
-   * Initialises get and sets query object if one is provided
+   * Makes a fetch call to the PC API and return results
    * @method search#fetch
    * @return {Promise<string>|Promise<object>} - Promise returning either an object or string depending on format
    */
