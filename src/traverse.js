@@ -18,6 +18,18 @@ module.exports = class Traverse {
   }
 
   /**
+   * Sets all query parameters which are sent with the traverse request. Will overwrite existing query settings.
+   * @method traverse#query
+   * @param {object} queryObject - Object representing the query parameters to be sent along with the traverse command.
+   * @returns {this}
+   */
+  query(queryObject) {
+	this.request.query(queryObject);
+
+	return this;
+  }
+
+  /**
    * Sets uri parameter which is to be sent with the traverse request
    * @method traverse#uri
    * @param {string} value - uri

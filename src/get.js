@@ -18,7 +18,7 @@ module.exports = class Get {
   }
 
   /**
-   * Sets uri parameter which is to be sent with the get request
+   * Sets all query parameters which are sent with the get request. Will overwrite existing query settings.
    * @method get#query
    * @param {object} queryObject - Object representing the query parameters to be sent along with the get command.
    * @returns {this}

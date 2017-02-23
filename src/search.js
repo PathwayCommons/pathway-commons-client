@@ -9,7 +9,7 @@ var PcRequest = require('./private/pc-request.js');
  */
 module.exports = class Search {
   /**
-   * Initialises get and sets query object if one is provided. Chainable.
+   * Initialises search. Chainable.
    * @constructor
    * @param {object} [queryObject] - Object representing the query parameters to be sent along with the search command.
    * @returns {this}
@@ -19,9 +19,9 @@ module.exports = class Search {
   }
 
   /**
-   * Sets uri parameter which is to be sent with the get request
+   * Sets all query parameters which are sent with the search request. Will overwrite existing query settings.
    * @method search#query
-   * @param {object} queryObject - Object representing the query parameters to be sent along with the get command.
+   * @param {object} queryObject - Object representing the query parameters to be sent along with the search command.
    * @returns {this}
    */
   query(queryObject) {

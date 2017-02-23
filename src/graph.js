@@ -10,12 +10,24 @@ var sourceCheck = require('./private/helpers.js').sourceCheck;
  */
 module.exports = class Graph {
   /**
-   * Initialises get. Chainable.
+   * Initialises graph. Chainable.
    * @constructor
    * @returns {this}
    */
   constructor() {
     this.request = new PcRequest("graph");
+  }
+
+  /**
+   * Sets all query parameters which are sent with the graph request. Will overwrite existing query settings.
+   * @method graph#query
+   * @param {object} queryObject - Object representing the query parameters to be sent along with the graph command.
+   * @returns {this}
+   */
+  query(queryObject) {
+    this.request.query(queryObject);
+
+    return this;
   }
 
   /**
