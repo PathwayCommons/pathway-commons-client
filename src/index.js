@@ -12,5 +12,6 @@ module.exports = {
   get: (() => new(require('./get.js'))()),
   search: (() => new(require('./search.js'))()),
   traverse: (() => new(require('./traverse.js'))()),
-  graph: (() => new(require('./graph.js'))())
+  graph: (() => new(require('./graph.js'))()),
+  top_pathways: (() => new(require('./top_pathways.js'))())
 };
