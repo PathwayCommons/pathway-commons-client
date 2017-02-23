@@ -37,7 +37,7 @@ module.exports = {
   sourceCheck: (sourceName, id) => {
     var checkFunction = module.exports[sourceName.toLowerCase() + "Check"];
     if ((typeof checkFunction === "function") && (sourceName !== "source")) {
-      checkFunction(id);
+      return checkFunction(id);
     } else {
       throw new SyntaxError(sourceName + " is an invalid source");
     }
