@@ -38,4 +38,37 @@ describe('test datasources module', function() {
 			chai.assert.notEqual(output1.length, {});
 		});
 	});
+
+	describe('get valid icon url for reactome', function() {
+		// Assume Promises supported
+		var output1;
+
+		beforeEach(function(done){
+			pc.datasources.lookupIcon("reactome").then(function(x) {
+				output1 = x;
+				done();
+			});
+		});
+
+		it('The get request should return a non-empty string', function() {
+			chai.assert.typeOf(output1, "string");
+			chai.assert.notEqual(output1.length, 0);
+		});
+	});
+
+	describe('get invalid icon url', function() {
+		// Assume Promises supported
+		var output1;
+
+		beforeEach(function(done){
+			pc.datasources.lookupIcon("nodata").then(function(x) {
+				output1 = x;
+				done();
+			});
+		});
+
+		it('The get request should return undefined', function() {
+			chai.assert.typeOf(output1, "undefined");
+		});
+	});
 });

@@ -38,7 +38,8 @@ module.exports = class Datasources {
               uri: ds.uri,
               name: name,
               description: ds.description,
-              type: ds.type
+              type: ds.type,
+              iconUrl: ds.iconUrl
             };
           });
       } else {
@@ -64,17 +65,17 @@ module.exports = class Datasources {
 
   /**
    * Fetches the logo for the datasource using either datasources URI or name. Intended to be used to generate image tags for thumbnails.
-   * @method datasources#lookupId
+   * @method datasources#lookupIcon
    * @param {string} dsUriOrName - Either URI or name of the data source
    * @return {Promise<string>} logoUrl - Promise containing URL of datasource in question, else undefined if datasource not found
    */
-  lookupId(dsUriOrName) {
+  lookupIcon(dsUriOrName) {
     dsUriOrName = dsUriOrName || "";
     return this.data.then((dataSources) => {
       for (var key in dataSources) {
         var ds = dataSources[key];
         if (ds.uri == dsUriOrName || ds.name.toLowerCase() == dsUriOrName.toLowerCase()) {
-          return ds.id;
+          return ds.iconUrl;
         }
       }
     });
