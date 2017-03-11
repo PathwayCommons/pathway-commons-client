@@ -12,9 +12,6 @@
     "url": "https://github.com/mj3cheun/pathway-commons/issues"
   },
   "homepage": "https://github.com/mj3cheun/pathway-commons",
-  "browser": {
-    "node-fetch": "whatwg-fetch"
-  },
   "scripts": {
     "predocument": "gulp clean-docs",
     "document": "jsdoc ./src -d ./docs",
@@ -29,6 +26,7 @@
     "lint": "npm run lint-js"
   },
   "dependencies": {
+    "detect-node": "^2.0.3",
     "lodash": "^4.17.4",
     "node-fetch": "^1.6.3",
     "query-string": "^4.3.1",

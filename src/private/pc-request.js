@@ -1,6 +1,6 @@
 'use strict';
 
-var fetch = require('node-fetch');
+var fetch = require('detect-node') ? require('node-fetch') : require('whatwg-fetch');
 var isEmpty = require('lodash/isEmpty');
 var isArray = require('lodash/isArray');
 var isObject = require('lodash/isObject');
