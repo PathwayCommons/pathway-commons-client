@@ -72,7 +72,7 @@ module.exports = class PcRequest {
       ""
     ];
 
-    if(acceptedStrings.indexOf(formatString) !== -1) {
+    if (acceptedStrings.indexOf(formatString) !== -1) {
       this.formatString = formatString;
     }
 
@@ -87,11 +87,11 @@ module.exports = class PcRequest {
     return fetch(url).then((res) => {
       switch (res.status) {
         case 200:
-          return res.headers._headers["content-type"][0].toLowerCase().indexOf("json") !== -1 ? res.json() : res.text();
-          break;
+          // To read headers from both node and browser fetch
+          var contentType = res.headers._headers ? res.headers._headers["content-type"][0] : res.headers.map["content-type"];
+          return contentType.toLowerCase().indexOf("json") !== -1 ? res.json() : res.text();
         case 500:
           return null;
-          break;
         default:
           throw new Error(res.status);
       }
