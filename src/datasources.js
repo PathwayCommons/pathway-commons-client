@@ -59,7 +59,7 @@ module.exports = class Datasources {
    * @method datasources#get
    * @returns {Promise<object>} - Returns cached promise from the fetch method
    */
-  get(callback) {
+  get() {
     return this.data;
   }
 
