@@ -84,7 +84,7 @@ module.exports = class PcRequest {
       user: user.id()
     } : {}));
 
-    return fetch(url).then((res) => {
+    return fetch(url, {method: 'GET', mode: 'no-cors'}).then(res => {
       switch (res.status) {
         case 200:
           // To read headers from both node and browser fetch
