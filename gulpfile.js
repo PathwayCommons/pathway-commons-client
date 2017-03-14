@@ -73,7 +73,7 @@ var bundle = function( b, opts ){
   return ( b
     .bundle()
     .on( 'error', handleErr )
-    .pipe( source('pathway-commons' + (opts && opts.debug ? ".min.js" : ".js") ) )
+    .pipe( source('pathway-commons' + ( typeof opts === "undefined" || ( opts && opts.debug ) ? ".js" : ".min.js") ) )
     .pipe( buffer() )
   ) ;
 };
