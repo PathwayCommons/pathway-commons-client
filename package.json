@@ -3,7 +3,7 @@
   "version": "1.0.3",
   "description": "Library to facilitate access to the Pathway Commons web service",
   "license": "MIT",
-  "main": "src/index.js",
+  "main": "build/bundle.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/mj3cheun/pathway-commons.git"
