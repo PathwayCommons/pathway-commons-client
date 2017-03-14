@@ -1,6 +1,6 @@
 {
   "name": "pathway-commons",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Library to facilitate access to the Pathway Commons web service",
   "license": "MIT",
   "main": "dist/index.js",
