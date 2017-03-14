@@ -19,7 +19,6 @@
     "test": "mocha --timeout 5000",
     "build": "gulp build",
     "build-prod": "gulp build-prod",
-    "build-node": "browserify --standalone pathway-commons -e src/index.js -o build/bundle.js -d -t [ babelify --comments false ] --node",
     "clean": "gulp clean",
     "watch": "gulp watch",
     "lint-js": "eslint ./src || echo JS linting failed with the above errors",
