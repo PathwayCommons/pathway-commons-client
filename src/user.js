@@ -5,7 +5,8 @@ var validateString = require('./private/helpers.js').validateString;
 
 const idPrefix = "pathwaycommons-js-lib:";
 
-var _id = new WeakMap();
+const _id = new WeakMap();
+const key = {};
 
 const setId = (userId) => {
   if (validateString(userId)) {
@@ -18,16 +19,16 @@ const setId = (userId) => {
     userId = idPrefix + uuidV4();
   }
 
-  if(_id.get(this) === undefined) {
-    _id.set(this, userId);
+  if(_id.get(key) === undefined) {
+    _id.set(key, userId);
   }
 }
 
 module.exports = {
   id: (userId) => {
-    if(!((userId === undefined) && (_id.get(this) !== undefined))) {
+    if(!((userId === undefined) && (_id.get(key) !== undefined))) {
       setId(userId);
     }
-    return _id.get(this);
+    return _id.get(key);
   }
 }
