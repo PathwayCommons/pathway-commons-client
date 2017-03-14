@@ -1,6 +1,7 @@
 var process = require('process');
 var objectAssign = require('object-assign');
 var gulp = require('gulp');
+var gulpBabel = require('gulp-babel');
 var browserify = require('browserify');
 var babelify = require('babelify');
 var watchify = require('watchify');
@@ -68,11 +69,11 @@ var transform = function( b ){
   ) ;
 };
 
-var bundle = function( b ){
+var bundle = function( b, opts ){
   return ( b
     .bundle()
     .on( 'error', handleErr )
-    .pipe( source('bundle.js') )
+    .pipe( source('pathway-commons' + (opts && opts.debug ? ".min.js" : ".js") ) )
     .pipe( buffer() )
   ) ;
 };
@@ -88,9 +89,9 @@ var buildJs = function( opts ){
 
   setBuildEnv( opts );
 
-  return bundle( transform( getBrowserified( opts ) ) )
+  return bundle( transform( getBrowserified( opts ) ), opts )
     .pipe( opts.debug ? streamNop() : $.uglify( require('./.uglify.json') ) )
-    .pipe( gulp.dest('./build') )
+    .pipe( gulp.dest('./dist/build') )
   ;
 };
 
@@ -115,69 +116,31 @@ var buildJsDeps = function( opts ){
     .pipe( source('deps.js') )
     .pipe( buffer() )
     .pipe( opts.debug ? streamNop() : $.uglify( require('./.uglify.json') ) )
-    .pipe( gulp.dest('./build') )
+    .pipe( gulp.dest('./dist/build') )
   ) ;
 };
 
-var buildCss = function( opts ){
-  opts = objectAssign( {
-    debug: true
-  }, opts );
-
-  var s = gulp.src( './src/styles/index.css' );
-
-  if( opts.debug ){
-    s = s.pipe( $.sourcemaps.init() );
-  }
-
-  s = ( s
-    .pipe(
-      $.postcss(
-        [
-          require('postcss-import')(),
-          require('postcss-cssnext')( require('./.cssnext.json') )
-        ].concat(
-          opts.debug ? [] : [ require('cssnano')( require('./.cssnano.json') ) ]
-        )
-      )
-    )
-
-    .on( 'error', handleErr )
-  );
-
-  if( opts.debug ){
-    s = s.pipe( $.sourcemaps.write() );
-  }
-
-  return ( s
-    .pipe( $.rename('bundle.css') )
-    .pipe( gulp.dest('./build') )
-  );
-};
+gulp.task('es6Transform', () => {
+    gulp.src('./src/**/*.js')
+        .pipe(gulpBabel())
+        .pipe(gulp.dest('./dist'));
+});
 
 gulp.task('js', function(){ return buildJs(); });
 gulp.task('js-prod', function(){ return buildJs({ debug: false }); });
 
-
-
 gulp.task('js-deps', nopTarget);
 gulp.task('js-deps-prod', nopTarget);
 
-
-gulp.task('css', nopTarget);
-gulp.task('css-prod', nopTarget);
-
-gulp.task('watch', ['css', 'js-deps'], function(){
+gulp.task('watch', ['es6Transform', 'js-deps'], function(){
 
   $.livereload.listen({
     basePath: process.cwd()
   });
 
-  gulp.watch( ['./src/views/index.html', './src/demo.html', './build/deps.js', './build/bundle.js', './build/bundle.css'] )
+  gulp.watch( ['./src/views/index.html', './src/demo.html', './dist/build/*'] )
     .on('change', $.livereload.changed)
   ;
-
-  gulp.watch( ['./src/styles/**/*'], ['css'] );
 
   gulp.watch( ['./package.json'], ['js-deps'] );
 
@@ -185,14 +148,14 @@ gulp.task('watch', ['css', 'js-deps'], function(){
     $.util.log( $.util.colors.white('JS rebuilding via watch...') );
 
     bundle( b )
-      .pipe( gulp.dest('./build') )
+      .pipe( gulp.dest('./dist/build') )
       .on('finish', function(){
         $.util.log( $.util.colors.green('JS rebuild finished via watch') );
       })
     ;
   };
 
-  var b = getBrowserified();
+  var b = getBrowserified( { debug: true } );
 
   transform( b );
 
@@ -205,12 +168,10 @@ gulp.task('watch', ['css', 'js-deps'], function(){
 
 gulp.task('default', ['watch'], emptyTask);
 
-gulp.task('build', ['js', 'js-deps', 'css'], emptyTask);
-
-gulp.task('build-prod', ['js-prod', 'js-deps-prod', 'css-prod'], emptyTask);
+gulp.task('build', ['es6Transform', 'js', 'js-prod', 'js-deps', 'js-deps-prod'], emptyTask);
 
 gulp.task('clean', function(){
-  return gulp.src('./build')
+  return gulp.src('./dist')
     .pipe( clean() )
   ;
 });

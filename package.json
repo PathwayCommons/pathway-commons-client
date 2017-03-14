@@ -3,7 +3,7 @@
   "version": "1.0.4",
   "description": "Library to facilitate access to the Pathway Commons web service",
   "license": "MIT",
-  "main": "build/bundle.js",
+  "main": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/mj3cheun/pathway-commons.git"
@@ -18,7 +18,6 @@
     "postdocument": "open docs/index.html",
     "test": "mocha --timeout 5000",
     "build": "gulp build",
-    "build-prod": "gulp build-prod",
     "clean": "gulp clean",
     "watch": "gulp watch",
     "lint-js": "eslint ./src || echo JS linting failed with the above errors",
@@ -26,6 +25,7 @@
   },
   "dependencies": {
     "fetch-ponyfill": "^4.0.0",
+    "gulp-babel": "^6.1.2",
     "lodash": "^4.17.4",
     "query-string": "^4.3.1",
     "uuid": "^3.0.1"
