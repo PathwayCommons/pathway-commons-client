@@ -25,7 +25,6 @@
   },
   "dependencies": {
     "fetch-ponyfill": "^4.0.0",
-    "gulp-babel": "^6.1.2",
     "lodash": "^4.17.4",
     "query-string": "^4.3.1",
     "uuid": "^3.0.1"
@@ -41,6 +40,7 @@
     "forever": "^0.15.2",
     "glob": "^7.0.5",
     "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
     "gulp-livereload": "^3.8.1",
     "gulp-load-plugins": "^1.2.4",
     "gulp-plumber": "^1.1.0",
