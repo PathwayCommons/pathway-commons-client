@@ -18,6 +18,7 @@
     "document": "jsdoc ./src -d ./docs",
     "postdocument": "open docs/index.html",
     "test": "mocha --timeout 5000",
+    "prepublish": "npm run clean && npm run build",
     "build": "gulp build",
     "clean": "gulp clean",
     "watch": "gulp watch",
