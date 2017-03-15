@@ -2,6 +2,7 @@
   "name": "pathway-commons",
   "version": "1.0.5",
   "description": "Library to facilitate access to the Pathway Commons web service",
+  "author": "Manfred Cheung @ UofT <mj3cheun@uwaterloo.ca>",
   "license": "MIT",
   "main": "dist/index.js",
   "repository": {
@@ -23,6 +24,9 @@
     "lint-js": "eslint ./src || echo JS linting failed with the above errors",
     "lint": "npm run lint-js"
   },
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "fetch-ponyfill": "^4.0.0",
     "lodash": "^4.17.4",
