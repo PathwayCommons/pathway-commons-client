@@ -17,15 +17,15 @@ module.exports = class Datasources {
    */
   constructor() {
     this.request = new PcRequest("metadata/datasources", false);
-    this.data = this.fetch();
+    this.data = this.refresh();
   }
 
   /**
    * Makes a fetch request to PC requesting data sources. If called after class initialization, purges existing data source cache and makes a call to PC to re-fetch data sources.
-   * @method datasources#fetch
+   * @method datasources#refresh
    * @returns {Promise<object>} - Returns promise containing either the data source array or null if data source is not available
    */
-  fetch() {
+  refresh() {
     var dataPromise = this.request.fetch().then((response) => {
       var output = {};
       if (isObject(response)) {
@@ -56,10 +56,10 @@ module.exports = class Datasources {
 
   /**
    * Returns promise containing data sources from PC.
-   * @method datasources#get
+   * @method datasources#fetch
    * @returns {Promise<object>} - Returns cached promise from the fetch method
    */
-  get() {
+  fetch() {
     return this.data;
   }
 
