@@ -1,7 +1,7 @@
 'use strict';
 
 var PcRequest = require('./private/pc-request.js');
-var sourceCheck = require('./private/helpers.js').sourceCheck;
+var sourceCheck = require('./utilities.js').sourceCheck;
 
 /**
  * @class

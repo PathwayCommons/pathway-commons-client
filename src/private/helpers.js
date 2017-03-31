@@ -26,47 +26,5 @@ module.exports = {
     } else {
       return false;
     }
-  },
-
-  /**
-   * @private
-   * @param {string} sourceName
-   * @param {string} id
-   * @return {boolean} idValidity
-   */
-  sourceCheck: (sourceName, id) => {
-    var checkFunction = module.exports[sourceName.toLowerCase() + "Check"];
-    if ((typeof checkFunction === "function") && (sourceName !== "source")) {
-      return checkFunction(id);
-    } else {
-      throw new SyntaxError(sourceName + " is an invalid source");
-    }
-  },
-
-  /**
-   * @private
-   * @param {string} uniprotId
-   * @return {boolean} idValidity
-   */
-  uniprotCheck: (uniprodId) => {
-    return /^([A-N,R-Z][0-9]([A-Z][A-Z, 0-9][A-Z, 0-9][0-9]){1,2})|([O,P,Q][0-9][A-Z, 0-9][A-Z, 0-9][A-Z, 0-9][0-9])(\.\d+)?$/.test(uniprodId);
-  },
-
-  /**
-   * @private
-   * @param {string} chebiId
-   * @return {boolean} idValidity
-   */
-  chebiCheck: (chebiId) => {
-    return /^CHEBI:\d+$/.test(chebiId) && (chebiId.length <= ("CHEBI:".length + 6));
-  },
-
-  /**
-   * @private
-   * @param {string} hgncId
-   * @return {boolean} idValidity
-   */
-  hgncCheck: (hgncId) => {
-    return /^[A-Za-z-0-9_]+(\@)?$/.test(hgncId);
   }
 }

@@ -1,4 +1,5 @@
 'use strict';
+var constants = require('./constants.js');
 
 var fetch = require('fetch-ponyfill')().fetch;
 var isEmpty = require('lodash/isEmpty');
@@ -18,11 +19,6 @@ module.exports = class PcRequest {
     if (!(validateString(commandValue))) {
       throw new SyntaxError("PcRequest constructor parameter invalid");
     }
-    Object.defineProperty(this, "pcUrl", {
-      get: () => {
-        return "http://www.pathwaycommons.org/pc2/";
-      }
-    });
     Object.defineProperty(this, "submitId", {
       get: () => {
         return (submitId === false) ? false : true;
@@ -80,7 +76,7 @@ module.exports = class PcRequest {
   }
 
   fetch() {
-    var url = this.pcUrl + this.command + (this.formatString ? "." + this.formatString : "") + "?" + stringify(Object.assign({}, this.queryObject, this.submitId ? {
+    var url = constants.pcAddress + this.command + (this.formatString ? "." + this.formatString : "") + "?" + stringify(Object.assign({}, this.queryObject, this.submitId ? {
       user: user.id()
     } : {}));
 

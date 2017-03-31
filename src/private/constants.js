@@ -1,4 +1,6 @@
 module.exports = {
+  pcAddress: "http://www.pathwaycommons.org/pc2/",
+
   BioPaxClass: [
     "BindingFeature",
     "BiochemicalPathwayStep",
