@@ -19,7 +19,7 @@ module.exports = {
         }, timeoutValue);
         xhttp.open("GET", address);
         xhttp.onreadystatechange = () => {
-          if (this.readyState == 4 && this.status == 200) {
+          if (xhttp.readyState === XMLHttpRequest.DONE && xhttp.status === 200) {
             clearTimeout(timeoutRef);
             resolve(true);
           } else {
