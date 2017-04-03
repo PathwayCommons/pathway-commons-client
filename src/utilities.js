@@ -22,9 +22,6 @@ module.exports = {
           if (xhttp.readyState === XMLHttpRequest.DONE && xhttp.status === 200) {
             clearTimeout(timeoutRef);
             resolve(true);
-          } else {
-            clearTimeout(timeoutRef);
-            resolve(false);
           }
         };
         xhttp.send();
