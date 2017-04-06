@@ -36,7 +36,7 @@ module.exports = class PcRequest {
 
   query(queryObject) {
     if (isObject(queryObject)) {
-      this.queryObject = queryObject;
+      this.queryObject = Object.assign({}, queryObject);
     }
 
     return this;
