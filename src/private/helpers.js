@@ -26,5 +26,14 @@ module.exports = {
     } else {
       return false;
     }
+  },
+
+  /**
+   * @private
+   * @param {string} inputString - String to be checked
+   * @return {string} Clean string
+   */
+  escapeLucene: (inputString) => {
+    return inputString.replace(/([\!\*\+\-\&\|\(\)\[\]\{\}\^\~\?\:\/\\"])/g, "\\$1");
   }
 }

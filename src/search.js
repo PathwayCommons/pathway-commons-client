@@ -1,6 +1,7 @@
 'use strict';
 
 var PcRequest = require('./private/pc-request.js');
+var escapeLucene = require('./private/helpers.js').escapeLucene;
 
 /**
  * @class
@@ -86,6 +87,20 @@ module.exports = class Search {
    */
   type(value) {
     this.request.set("type", value);
+
+    return this;
+  }
+
+  /**
+   * Escapes whatever value is contained in q at the moment
+   * @method search#escape
+   * @param {boolean} [toggle=true] - Switches lucene escaping on or off.
+   * @returns {this}
+   */
+  escape(toggle) {
+    if(toggle === undefined || toggle === true) {
+      this.q(escapeLucene(this.request.queryObject.q));
+    }
 
     return this;
   }
