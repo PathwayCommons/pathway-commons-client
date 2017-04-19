@@ -15,7 +15,7 @@ var validateString = require('./helpers.js').validateString;
  * @classdesc Class for use in fetch requests to Pathway Commons
  */
 module.exports = class PcRequest {
-  constructor(commandValue, submitId) {
+  constructor(commandValue, submitId, userOverride) {
     if (!(validateString(commandValue))) {
       throw new SyntaxError("PcRequest constructor parameter invalid");
     }
@@ -27,6 +27,11 @@ module.exports = class PcRequest {
     Object.defineProperty(this, "command", {
       get: () => {
         return commandValue;
+      }
+    });
+    Object.defineProperty(this, "user", {
+      get: () => {
+        return userOverride ? userOverride : user.id();
       }
     });
 
@@ -77,7 +82,7 @@ module.exports = class PcRequest {
 
   fetch() {
     var url = constants.pcAddress + this.command + (this.formatString ? "." + this.formatString : "") + "?" + stringify(Object.assign({}, this.queryObject, this.submitId ? {
-      user: user.id()
+      user: this.user
     } : {}));
 
     return fetch(url, {method: 'GET', mode: 'no-cors'}).then(res => {
