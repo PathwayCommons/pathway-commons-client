@@ -7,7 +7,7 @@ var isArray = require('lodash/isArray');
 var isObject = require('lodash/isObject');
 var stringify = require('query-string').stringify;
 
-var user = require('../user.js');
+var utilities = require('../utilities.js');
 var validateString = require('./helpers.js').validateString;
 
 /**
@@ -31,7 +31,7 @@ module.exports = class PcRequest {
     });
     Object.defineProperty(this, "user", {
       get: () => {
-        return userOverride ? userOverride : user.id();
+        return userOverride ? userOverride : utilities.user();
       }
     });
 

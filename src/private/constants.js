@@ -1,6 +1,8 @@
 module.exports = {
   pcAddress: "http://www.pathwaycommons.org/pc2/",
 
+  idPrefix: "pathwaycommons-js-lib:",
+
   dsIdValidation: {
     uniprot: id => /^([A-N,R-Z][0-9]([A-Z][A-Z, 0-9][A-Z, 0-9][0-9]){1,2})|([O,P,Q][0-9][A-Z, 0-9][A-Z, 0-9][A-Z, 0-9][0-9])(\.\d+)?$/.test(id),
     chebi: id => /^CHEBI:\d+$/.test(id) && (id.length <= ("CHEBI:".length + 6)),

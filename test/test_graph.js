@@ -3,7 +3,7 @@ var chai = require('chai');
 var pc = require('../src/index.js');
 
 // Sets user id as unit-test
-pc.user.id("unit-test");
+pc.utilities.user("unit-test");
 
 // Runs tests on server side on node js
 // Tests are only valid  after 'npm run build-node'

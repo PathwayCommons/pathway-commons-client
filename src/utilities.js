@@ -1,10 +1,37 @@
 'use strict';
 var fetch = require('fetch-ponyfill')().fetch;
+var uuidV4 = require('uuid/v4');
 var constants = require('./private/constants.js');
 
+// Declare private variables
+var _id;
+
+/**
+ * @module utilities
+ */
 module.exports = {
   /**
-   * @param {number} timeout
+   * @param {string} [newId] - If given string, sets a new user ID. If null, turns of user id. Else simply returns current ID.
+   * @return {string} id - Current user ID
+   */
+  user: (newId) => {
+    if(_id === undefined || newId !== undefined) {
+      if(typeof newId === "string") {
+        newId = constants.idPrefix + newId;
+      }
+      else if(newId === null) {
+        newId = "";
+      }
+      else if(newId === undefined) {
+        newId = constants.idPrefix + uuidV4();
+      }
+      _id = newId;
+    }
+    return _id;
+  },
+
+  /**
+   * @param {number} [timeout=1000] Sets length of time before timeout in milliseconds
    * @return {boolean} PC2 Status
    */
   pcCheck: (timeout) => { // timeout is in milliseconds
@@ -51,8 +78,8 @@ module.exports = {
   },
 
   /**
-   * @param {string} sourceName
-   * @param {string} id
+   * @param {string} sourceName - Name of source type to validate against (eg. uniprot)
+   * @param {string} id - ID to validate
    * @return {boolean} idValidity
    */
   sourceCheck: (sourceName, id) => {

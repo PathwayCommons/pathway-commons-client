@@ -7,7 +7,6 @@
  */
 
 module.exports = {
-  user: require('./user.js'),
   utilities: require('./utilities.js'),
   datasources: new(require('./datasources.js'))(),
   get: (() => new(require('./get.js'))()),

@@ -2,6 +2,7 @@
 
 var isObject = require('lodash/isObject');
 
+var constants = require('./private/constants.js');
 var PcRequest = require('./private/pc-request.js');
 
 /**
@@ -16,7 +17,7 @@ module.exports = class Datasources {
    * @returns {this}
    */
   constructor() {
-    this.request = new PcRequest("metadata/datasources", false);
+    this.request = new PcRequest("metadata/datasources", false, constants.idPrefix + "datasources");
     this.data = this.refresh();
   }
 
