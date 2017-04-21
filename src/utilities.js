@@ -35,7 +35,7 @@ module.exports = {
    * @return {boolean} PC2 Status
    */
   pcCheck: (timeout) => { // timeout is in milliseconds
-    var address = constants.pcAddress;
+    var address = constants.pcAddress + "search?q=p53";
     var timeoutValue = Number(timeout != null ? timeout : 0) || 1000; // default timeout is 1000ms
     return new Promise((resolve, reject) => {
       if (typeof XMLHttpRequest !== "undefined") { // Assume browserside: done using xhr because network connections cancellable
