@@ -20,15 +20,13 @@ The following environment variables can be used to configure the server:
 
 ## Run targets
 
-- `npm start` : start the server
-- `npm stop` : stop the server
 - `npm run build` : build project
 - `npm run build-prod` : build the project for production
 - `npm run clean` : clean the project
 - `npm run watch` : watch mode (debug mode enabled, auto rebuild, livereload)
 - `npm test` : run tests
 - `npm run lint` : lint the project
-- `npm run document` : Generate documentation and place resulting HTML files in the docs folder
+- `npm run docs` : Generate documentation and place resulting HTML files in the docs folder
 
 
 

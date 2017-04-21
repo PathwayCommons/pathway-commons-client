@@ -1,4 +1,5 @@
 node_modules
 docs/*
 .DS_Store
+npm-debug.log
 test/local_*

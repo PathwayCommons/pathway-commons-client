@@ -10,7 +10,6 @@ var del = require('del');
 var paths = require('vinyl-paths');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
-var clean = function(){ return paths( del ); };
 var notifier = require('node-notifier');
 var $ = require('gulp-load-plugins')();
 var runSequence = require('run-sequence');
@@ -173,14 +172,3 @@ gulp.task('default', ['watch'], emptyTask);
 
 gulp.task('build', ['es6Transform', 'js', 'js-prod', 'js-deps', 'js-deps-prod'], emptyTask);
 
-gulp.task('clean', function(){
-  return gulp.src('./dist')
-    .pipe( clean() )
-  ;
-});
-
-gulp.task('clean-docs', function(){
-  return gulp.src('./docs')
-    .pipe( clean() )
-  ;
-});
