@@ -24,9 +24,9 @@ module.exports = class Traverse {
    * @returns {this}
    */
   query(queryObject) {
-	this.request.query(queryObject);
+    this.request.query(queryObject);
 
-	return this;
+    return this;
   }
 
   /**

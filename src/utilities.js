@@ -85,8 +85,8 @@ module.exports = {
   sourceCheck: (sourceName, id) => {
     var checkFunction = constants.dsIdValidation[
       sourceName
-	      .toLowerCase() // Make all lowercase
-	      .replace(/[^a-zA-Z0-9]/g, "") // Remove any non letter or number symbols
+        .toLowerCase() // Make all lowercase
+        .replace(/[^a-zA-Z0-9]/g, "") // Remove any non letter or number symbols
     ];
     if (typeof checkFunction === "function") {
       return checkFunction(id);

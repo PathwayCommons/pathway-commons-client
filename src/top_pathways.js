@@ -48,9 +48,9 @@ module.exports = class Top_Pathways {
    * @returns {this}
    */
   datasource(value) {
-	this.request.set("datasource", value);
+    this.request.set("datasource", value);
 
-	return this;
+    return this;
   }
 
   /**
@@ -60,9 +60,9 @@ module.exports = class Top_Pathways {
    * @returns {this}
    */
   organism(value) {
-	this.request.set("organism", value);
+    this.request.set("organism", value);
 
-	return this;
+    return this;
   }
 
   /**
