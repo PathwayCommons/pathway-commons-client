@@ -14,7 +14,7 @@ module.exports = class Traverse {
    * @returns {this}
    */
   constructor() {
-    this.request = new PcRequest("traverse");
+    this.request = new PcRequest("traverse").format("json");
   }
 
   /**
