@@ -14,7 +14,7 @@ module.exports = class Top_Pathways {
    * @returns {this}
    */
   constructor() {
-    this.request = new PcRequest("top_pathways");
+    this.request = new PcRequest("top_pathways").format("json");
   }
 
   /**
@@ -72,7 +72,7 @@ module.exports = class Top_Pathways {
    * @returns {this}
    */
   format(value) {
-    this.request.set("format", value);
+    this.request.format(value);
 
     return this;
   }
