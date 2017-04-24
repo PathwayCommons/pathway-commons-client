@@ -50,7 +50,7 @@ module.exports = class PcRequest {
   set(parameter, value) {
     parameter = String(parameter);
     if (parameter !== "") {
-      if (value === "" || (isArray(value) && !isEmpty(value))) {
+      if (value === "" || (isArray(value) && isEmpty(value))) {
         this.delete(parameter);
       } else {
         this.queryObject[parameter] = value;
