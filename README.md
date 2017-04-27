@@ -1,4 +1,4 @@
-Pathway Commons JS Library [![Build Status](https://travis-ci.org/PathwayCommons/pathway-commons.svg?branch=master)](https://travis-ci.org/PathwayCommons/pathway-commons)
+Pathway Commons JS Library [![Build Status](https://travis-ci.org/PathwayCommons/cpath2-client.svg?branch=master)](https://travis-ci.org/PathwayCommons/cpath2-client)
 ================
 
 # Description
@@ -23,7 +23,7 @@ import {utilities, search} from 'pathway-commons';
 ```
 
 ### Setting a username
-We request that our users set a username, which allows us to see how our users use both the pathway-commons library and the Pathway Commons service. If no username is registered, then the username is set to a random ID that will be reset every session. If you wish to opt out, set the user as `null`.
+We request that our users set a username, which allows us to see how our users use both the pathway-commons library and the Pathway Commons service. If no username is registered, then the username is set to a default ID. If you wish to opt out, set the user as `null`.
 
 ### Usage Example
 ```
