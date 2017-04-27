@@ -1,6 +1,5 @@
 'use strict';
 var fetch = require('fetch-ponyfill')().fetch;
-var uuidV4 = require('uuid/v4');
 var constants = require('./private/constants.js');
 
 // Declare private variables
@@ -23,7 +22,7 @@ module.exports = {
         newId = "";
       }
       else if(newId === undefined) {
-        newId = constants.idPrefix + uuidV4();
+        newId = constants.idPrefix + "default";
       }
       _id = newId;
     }
