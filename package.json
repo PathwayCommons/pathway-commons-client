@@ -7,12 +7,12 @@
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/PathwayCommons/pathway-commons.git"
+    "url": "https://github.com/PathwayCommons/cpath2-client.git"
   },
   "bugs": {
-    "url": "https://github.com/PathwayCommons/pathway-commons/issues"
+    "url": "https://github.com/PathwayCommons/cpath2-client/issues"
   },
-  "homepage": "https://github.com/PathwayCommons/pathway-commons",
+  "homepage": "https://github.com/PathwayCommons/cpath2-client",
   "scripts": {
     "predocs": "gulp clean-docs",
     "docs": "jsdoc ./src -d ./docs",
