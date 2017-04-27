@@ -1,6 +1,6 @@
 {
   "name": "pathway-commons",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": "Library to facilitate access to the Pathway Commons web service",
   "author": "Manfred Cheung @ UofT <mj3cheun@uwaterloo.ca>",
   "license": "MIT",
