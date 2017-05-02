@@ -23,19 +23,19 @@ import {utilities, search} from 'pathway-commons';
 ```
 
 ### Setting a username
-We request that our users set a username, which allows us to see how our users use both the pathway-commons library and the Pathway Commons service. If no username is registered, then the username is set to a default ID. If you wish to opt out, set the user as `null`.
+We request that our users set a username (or app name), which allows us to analyse how and what kind of different clients use the Pathway Commons web services. If no username is set, then the default username (ID) will be used.
 
 ### Usage Example
 ```
 var pathwayCommons = require('pathway-commons'); // Import library
 
-pathwayCommons.utilities.user('pathway-commons-demo'); // Set a username
+pathwayCommons.utilities.user('my-demo-app'); // Set your user/app name
 
 pathwayCommons.search() // Initialise a new Pathway Commons search request
   .q("insulin") // Set the q parameter
-  .datasource(["inoh", "reactome"]) // Set the datasource parameter
-  .type("pathway") // Set the type parameter
-  .organism("homo sapiens") // Set the orgamism parameter
+  .datasource(["inoh", "reactome"]) // filter by data source
+  .type("pathway") // filter by BioPAX class (includes sub-classes)
+  .organism("homo sapiens") // filter by orgamism (currently, Pathway Commons aims to integrate human data only)
   .format("json") // Set the output format
   .fetch() // Send the request to the Pathway Commons service
   .then((obj) => { // Receive the response asynchronously
