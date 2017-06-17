@@ -6,6 +6,8 @@ This library is an interface for accessing the Pathway Commons web API, which is
 
 The library makes use of promises in order to keep the API clean. Therefore, if you must support browsers which [do not natively support promises](http://caniuse.com/#feat=promises), please include a polyfill in your project.
 
+We also have a Pathway Commons (cPath2) [java client](http://github.com//PathwayCommons/cpath2/wiki/PC2Client) library.
+
 ### Getting Started
 This library can be included directly using a script tag, or it can be imported using several methods. This library is available on NPM.
 
