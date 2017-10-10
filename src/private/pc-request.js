@@ -2,9 +2,9 @@
 var constants = require('./constants.js');
 
 var fetch = require('fetch-ponyfill')().fetch;
-var isEmpty = require('lodash/isEmpty');
-var isArray = require('lodash/isArray');
-var isObject = require('lodash/isObject');
+var isEmpty = require('lodash.isempty');
+var isArray = require('lodash.isarray');
+var isObject = require('lodash.isobject');
 var stringify = require('query-string').stringify;
 
 var utilities = require('../utilities.js');
