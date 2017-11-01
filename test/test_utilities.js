@@ -17,6 +17,27 @@ describe('test utilities module', function() {
     });
   });
 
+  describe('endpoint call getting default endpoint', function() {
+    it('The endpoint should be default value', function() {
+      chai.assert.equal(pc.utilities.endpoint(), require('../src/private/constants.js').pcAddress);
+    });
+  });
+
+  describe('endpoint call setting new endpoint', function() {
+    it('The endpoint should be new value', function() {
+      chai.assert.equal(pc.utilities.endpoint('new-url'), 'new-url');
+      // Return endpoint to original value
+      pc.utilities.endpoint('');
+    });
+  });
+
+  describe('endpoint call resetting endpoint to default', function() {
+    it('The endpoint should be default value', function() {
+      pc.utilities.endpoint('new-url');
+      chai.assert.equal(pc.utilities.endpoint(''), require('../src/private/constants.js').pcAddress);
+    });
+  });
+
   describe('pcCheck call returning positive assuming pc operational', function() {
     var output1;
 

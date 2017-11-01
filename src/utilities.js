@@ -1,16 +1,18 @@
 'use strict';
 var fetch = require('fetch-ponyfill')().fetch;
 var constants = require('./private/constants.js');
+var helpers = require('./private/helpers.js');
 
 // Declare private variables
 var _id;
+var _endpoint;
 
 /**
  * @module utilities
  */
 module.exports = {
   /**
-   * @param {string} [newId] - If given string, sets a new user ID. If null, turns of user id. Else simply returns current ID.
+   * @param {string} [newId] - If given string, sets a new user ID. If null, turns off user id. Else simply returns current ID.
    * @return {string} id - Current user ID
    */
   user: (newId) => {
@@ -27,6 +29,20 @@ module.exports = {
       _id = newId;
     }
     return _id;
+  },
+
+  /**
+   * @param {string} [newEndpoint] - If given valid string, sets a new pathway commons endpoint. If empty string, resets endpoint to default. Otherwise do nothing.
+   * @return {string} endpoint - Current endpoint
+   */
+  endpoint: (newEndpoint) => {
+    if(_endpoint === undefined || newEndpoint !== undefined) {
+      if(!helpers.validateString(newEndpoint)) {
+        newEndpoint = constants.pcAddress;
+      }
+      _endpoint = newEndpoint;
+    }
+    return _endpoint;
   },
 
   /**
