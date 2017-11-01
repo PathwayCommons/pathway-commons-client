@@ -14,6 +14,7 @@
     },
     "plugins": [],
     "rules": {
-      "semi": "error"
+      "semi": "error",
+      "no-useless-escape": "off"
     }
   }

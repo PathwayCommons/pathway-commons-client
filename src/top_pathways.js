@@ -85,4 +85,4 @@ module.exports = class Top_Pathways {
   fetch() {
     return this.request.fetch();
   }
-}
+};
