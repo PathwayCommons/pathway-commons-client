@@ -31,7 +31,7 @@
     "predocs": "gulp clean-docs",
     "docs": "jsdoc ./src -d ./docs",
     "postdocs": "open docs/index.html",
-    "test": "mocha --timeout 5000",
+    "test": "mocha",
     "prebuild": "npm run clean",
     "build": "gulp build",
     "clean": "rimraf dist rimraf docs",
