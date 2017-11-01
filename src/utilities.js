@@ -49,8 +49,8 @@ module.exports = {
    * @param {number} [timeout=1000] Sets length of time before timeout in milliseconds
    * @return {boolean} PC2 Status
    */
-  pcCheck: (timeout) => { // timeout is in milliseconds
-    var address = constants.pcAddress + "search?q=p53&user=" + constants.idPrefix + "pcCheck";
+  pcCheck: function(timeout) { // timeout is in milliseconds
+    var address = this.endpoint() + "search?q=p53&user=" + constants.idPrefix + "pcCheck";
     var timeoutValue = Number(timeout != null ? timeout : 0) || 1000; // default timeout is 1000ms
     return new Promise((resolve, reject) => {
       if (typeof XMLHttpRequest !== "undefined") { // Assume browserside: done using xhr because network connections cancellable
