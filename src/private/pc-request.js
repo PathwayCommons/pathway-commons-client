@@ -98,4 +98,4 @@ module.exports = class PcRequest {
       }
     });
   }
-}
+};

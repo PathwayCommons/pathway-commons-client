@@ -125,4 +125,4 @@ module.exports = class Search {
   fetch() {
     return this.request.fetch();
   }
-}
+};
