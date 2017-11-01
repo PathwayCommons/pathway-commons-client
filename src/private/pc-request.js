@@ -1,5 +1,4 @@
 'use strict';
-var constants = require('./constants.js');
 
 var fetch = require('fetch-ponyfill')().fetch;
 var isEmpty = require('lodash.isempty');
@@ -81,7 +80,7 @@ module.exports = class PcRequest {
   }
 
   fetch() {
-    var url = constants.pcAddress + this.command + (this.formatString ? "." + this.formatString : "") + "?" + stringify(Object.assign({}, this.queryObject, this.submitId ? {
+    var url = utilities.endpoint() + this.command + (this.formatString ? "." + this.formatString : "") + "?" + stringify(Object.assign({}, this.queryObject, this.submitId ? {
       user: this.user
     } : {}));
 

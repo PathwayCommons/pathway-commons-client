@@ -1,16 +1,18 @@
 'use strict';
 var fetch = require('fetch-ponyfill')().fetch;
 var constants = require('./private/constants.js');
+var helpers = require('./private/helpers.js');
 
 // Declare private variables
 var _id;
+var _endpoint;
 
 /**
  * @module utilities
  */
 module.exports = {
   /**
-   * @param {string} [newId] - If given string, sets a new user ID. If null, turns of user id. Else simply returns current ID.
+   * @param {string} [newId] - If given string, sets a new user ID. If null, turns off user id. Else simply returns current ID.
    * @return {string} id - Current user ID
    */
   user: (newId) => {
@@ -30,11 +32,25 @@ module.exports = {
   },
 
   /**
+   * @param {string} [newEndpoint] - If given valid string, sets a new pathway commons endpoint. If empty string, resets endpoint to default. Otherwise do nothing.
+   * @return {string} endpoint - Current endpoint
+   */
+  endpoint: (newEndpoint) => {
+    if(_endpoint === undefined || newEndpoint !== undefined) {
+      if(!helpers.validateString(newEndpoint)) {
+        newEndpoint = constants.pcAddress;
+      }
+      _endpoint = newEndpoint;
+    }
+    return _endpoint;
+  },
+
+  /**
    * @param {number} [timeout=1000] Sets length of time before timeout in milliseconds
    * @return {boolean} PC2 Status
    */
-  pcCheck: (timeout) => { // timeout is in milliseconds
-    var address = constants.pcAddress + "search?q=p53&user=" + constants.idPrefix + "pcCheck";
+  pcCheck: function(timeout) { // timeout is in milliseconds
+    var address = this.endpoint() + "search?q=p53&user=" + constants.idPrefix + "pcCheck";
     var timeoutValue = Number(timeout != null ? timeout : 0) || 1000; // default timeout is 1000ms
     return new Promise((resolve, reject) => {
       if (typeof XMLHttpRequest !== "undefined") { // Assume browserside: done using xhr because network connections cancellable
