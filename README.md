@@ -6,16 +6,18 @@ This library is an interface for accessing the Pathway Commons web API, which is
 
 The library makes use of promises in order to keep the API clean. Therefore, if you must support browsers which [do not natively support promises](http://caniuse.com/#feat=promises), please include a polyfill in your project.
 
+We also have a Pathway Commons (cPath2) [java client](http://github.com//PathwayCommons/cpath2/wiki/PC2Client) library.
+
 ### Getting Started
 This library can be included directly using a script tag, or it can be imported using several methods. This library is available on NPM.
 
 CommonJS:
-```
+```js
 var pathwayCommons = require('pathway-commons');
 ```
 
 ES6 Imports:
-```
+```js
 // The entire library can be imported
 import pathwayCommons from 'pathway-commons';
 // Or only the necessary functions
@@ -26,7 +28,7 @@ import {utilities, search} from 'pathway-commons';
 We request that our users set a username (or app name), which allows us to analyse how and what kind of different clients use the Pathway Commons web services. If no username is set, then the default username (ID) will be used.
 
 ### Usage Example
-```
+```js
 var pathwayCommons = require('pathway-commons'); // Import library
 
 pathwayCommons.utilities.user('my-demo-app'); // Set your user/app name

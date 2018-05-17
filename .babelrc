@@ -1,6 +1,9 @@
 {
   "presets": [
-    "es2015"
+    "env"
+  ],
+  "plugins": [
+
   ],
   "ignore": "node_modules/**/*",
   "sourceMaps": "inline"

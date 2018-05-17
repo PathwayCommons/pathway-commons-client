@@ -1,25 +1,19 @@
 {
     "env": {
-        "browser": true,
-        "commonjs": true,
-        "es6": true,
-        "node": true,
-        "mocha": true
+      "browser": true,
+      "commonjs": true,
+      "es6": true,
+      "node": true,
+      "mocha": true
     },
     "extends": "eslint:recommended",
     "parserOptions": {
-        "ecmaFeatures": {
-            "experimentalObjectRestSpread": true,
-            "jsx": true
-        },
-        "sourceType": "module"
+      "ecmaFeatures": {
+        "jsx": true
+      }
     },
-    "globals": {
-
-    },
-    "plugins": [
-
-    ],
+    "plugins": [],
     "rules": {
+      "semi": "error"
     }
-}
+  }

@@ -1,6 +1,6 @@
 'use strict';
 
-var isObject = require('lodash/isObject');
+var isObject = require('lodash.isobject');
 
 var constants = require('./private/constants.js');
 var PcRequest = require('./private/pc-request.js');
