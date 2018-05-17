@@ -1,5 +1,5 @@
 module.exports = {
-  pcAddress: "https://www.pathwaycommons.org/pc2/",
+  pcAddress: process.env.PC_URL || "https://www.pathwaycommons.org/pc2/",
 
   idPrefix: "pathwaycommons-js-lib:",
 
