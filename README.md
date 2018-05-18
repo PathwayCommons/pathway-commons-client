@@ -1,4 +1,4 @@
-Pathway Commons JS Library [![Build Status](https://travis-ci.org/PathwayCommons/cpath2-client.svg?branch=master)](https://travis-ci.org/PathwayCommons/cpath2-client)
+Pathway Commons JS Library [![Build Status](https://travis-ci.org/PathwayCommons/pathway-commons-client.svg?branch=master)](https://travis-ci.org/PathwayCommons/pathway-commons-client)
 ================
 
 # Description
