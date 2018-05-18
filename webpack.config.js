@@ -23,6 +23,7 @@ let conf = {
   externals: Object.keys( pkg.dependencies ),
 
   plugins: [
+    isProd ? new UglifyJSPlugin() : null,
     isProfile ? new BundleAnalyzerPlugin() : null,
 
     new webpack.EnvironmentPlugin(['NODE_ENV'])
