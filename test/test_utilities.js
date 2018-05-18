@@ -1,5 +1,4 @@
 var chai = require('chai');
-
 var pc = require('../src/index.js');
 
 // Sets user id as unit-test
@@ -38,6 +37,21 @@ describe('test utilities module', function() {
     });
   });
 
+  describe('pcCheck call using long timeout returning positive assuming pc operational', function() {
+    var output1;
+
+    beforeEach(function(done){
+      pc.utilities.pcCheck(6000).then(x => {
+        output1 = x;
+        done();
+      });
+    });
+
+    it('pcCheck should return true', function() {
+      chai.assert.equal(output1, true);
+    });
+  });
+
   describe('pcCheck call returning positive assuming pc operational', function() {
     var output1;
 
@@ -48,7 +62,7 @@ describe('test utilities module', function() {
       });
     });
 
-    it('The graph request should return true', function() {
+    it('pcCheck should return true', function() {
       chai.assert.equal(output1, true);
     });
   });
@@ -64,7 +78,7 @@ describe('test utilities module', function() {
       });
     });
 
-    it('The graph request should return false', function() {
+    it('pcCheck should return false', function() {
       chai.assert.equal(output1, false);
     });
   });
