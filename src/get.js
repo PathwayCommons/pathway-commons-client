@@ -61,4 +61,4 @@ module.exports = class Get {
   fetch() {
     return this.request.fetch();
   }
-}
+};

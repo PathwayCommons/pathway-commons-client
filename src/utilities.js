@@ -52,10 +52,11 @@ module.exports = {
   pcCheck: function(timeout) { // timeout is in milliseconds
     var address = this.endpoint() + "search?q=p53&user=" + constants.idPrefix + "pcCheck";
     var timeoutValue = Number(timeout != null ? timeout : 0) || 1000; // default timeout is 1000ms
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
+      var timeoutRef;
       if (typeof XMLHttpRequest !== "undefined") { // Assume browserside: done using xhr because network connections cancellable
         var xhttp = new XMLHttpRequest();
-        var timeoutRef = setTimeout(() => {
+        timeoutRef = setTimeout(() => {
           xhttp.abort();
           resolve(false);
         }, timeoutValue);
@@ -68,7 +69,7 @@ module.exports = {
         };
         xhttp.send();
       } else { // Assume serverside: done using fetch as ponyfill already available and residual network connections immaterial
-        var timeoutRef = setTimeout(() => {
+        timeoutRef = setTimeout(() => {
           resolve(false);
         }, timeoutValue);
         fetch(address, {
@@ -84,7 +85,7 @@ module.exports = {
               resolve(false);
             }
           })
-          .catch(e => {
+          .catch(() => {
             clearTimeout(timeoutRef);
             resolve(false);
           });
@@ -109,4 +110,4 @@ module.exports = {
       throw new SyntaxError(sourceName + " is an invalid source");
     }
   }
-}
+};
