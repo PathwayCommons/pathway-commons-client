@@ -50,7 +50,7 @@ module.exports = {
    * @return {boolean} PC2 Status
    */
   pcCheck: function(timeout) { // timeout is in milliseconds
-    var address = this.endpoint() + "search?q=p53&user=" + constants.idPrefix + "pcCheck";
+    var address = this.endpoint() + "search?q=p53&user=" + constants.idPrefix;
     var timeoutValue = Number(timeout != null ? timeout : 0) || 1000; // default timeout is 1000ms
     return new Promise(resolve => {
       var timeoutRef;

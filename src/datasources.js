@@ -17,7 +17,8 @@ module.exports = class Datasources {
    * @returns {this}
    */
   constructor() {
-    this.request = new PcRequest("metadata/datasources", false, constants.idPrefix + "datasources");
+    this.request = new PcRequest("metadata/datasources", false, constants.idPrefix);
+    this.request.format('json');//required since PC10 (beta) ws; otherwise fails for some (server-side, I bet) reason
     this.data = this.refresh();
   }
 
@@ -40,14 +41,16 @@ module.exports = class Datasources {
               name: name,
               description: ds.description,
               type: ds.type,
-              iconUrl: ds.iconUrl
+              iconUrl: ds.iconUrl,
+              hasPathways : (ds.numPathwayds)?true:false
             };
           });
       } else {
         output = null;
       }
       return output;
-    }).catch(() => {
+    }).catch((e) => {
+      console.log(e);
       return null;
     });
 

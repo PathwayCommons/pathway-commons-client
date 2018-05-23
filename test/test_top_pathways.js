@@ -137,7 +137,9 @@ describe('test top_pathways module', function() {
     });
 
     it('The top_pathways request should return a null', function() {
-      chai.assert.equal(output1, null);
+      chai.assert.typeOf(output1,"object");
+      chai.assert.equal(output1.searchHit, false);
+      chai.assert.equal(output1.numHits, 0);
     });
   });
 });
