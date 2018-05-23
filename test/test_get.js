@@ -96,7 +96,7 @@ describe('test get module', function() {
   describe('get call with object argument and invalid uri', function() {
     var output1;
 
-    beforeEach(function(done){
+    before(function(done){
       pc.get()
         .query({
           uri: 'iiiiiiiiiiiiiiiiiiiiiiiii',
@@ -106,7 +106,8 @@ describe('test get module', function() {
         .then(function(x) {
           output1 = x;
           done();
-        });
+        })
+        .catch(e => done());
     });
 
     it('The get request should return a null', function() {

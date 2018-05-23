@@ -1,7 +1,7 @@
 module.exports = {
-  pcAddress: "https://www.pathwaycommons.org/pc2/",
+  pcAddress: process.env.PC_URL || "https://www.pathwaycommons.org/pc2/",
 
-  idPrefix: "pathwaycommons-js-lib:",
+  idPrefix: "pathway-commons.js:",
 
   dsIdValidation: {
     uniprot: id => /^([A-N,R-Z][0-9]([A-Z][A-Z, 0-9][A-Z, 0-9][0-9]){1,2})|([O,P,Q][0-9][A-Z, 0-9][A-Z, 0-9][A-Z, 0-9][0-9])(\.\d+)?$/.test(id),

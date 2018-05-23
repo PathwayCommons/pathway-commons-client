@@ -12,12 +12,13 @@ describe('test graph module', function() {
     this.timeout(40000);
     var output1;
 
-    beforeEach(function(done){
+    before(function(done){
       //done(); // Disables test
       pc.graph()
         .source("P11766", "uniprot")
         .kind("NEIGHBORHOOD")
         .format("JSONLD")
+        .direction("bothstream")
         .fetch()
         .then(function(x) {
           output1 = x;
@@ -35,13 +36,14 @@ describe('test graph module', function() {
     this.timeout(40000);
     var output1;
 
-    beforeEach(function(done){
+    before(function(done){
       //done(); // Disables test
       pc.graph()
         .query({
           source: "P11766",
           kind: "NEIGHBORHOOD",
-          format: "JSONLD"
+          format: "JSONLD",
+          direction: "bothstream"
         })
         .fetch()
         .then(function(x) {
@@ -59,21 +61,22 @@ describe('test graph module', function() {
   describe('graph call with conv. function and invalid source name', function() {
     var output1;
 
-    beforeEach(function(done){
+    before(function(done){
       try {
         pc.graph()
           .source("P11766", "hi")
           .kind("NEIGHBORHOOD")
           .format("JSONLD")
+          .direction("bothstream")
           .fetch()
-          .then(function(x) {
+          .then(function() {
             done();
-          })
+          });
       }
       catch(e) {
         output1 = e;
         done();
-      };
+      }
     });
 
     it('The graph request should return a SyntaxError', function() {
@@ -86,7 +89,7 @@ describe('test graph module', function() {
     this.timeout(40000);
     var output1;
 
-    beforeEach(function(done){
+    before(function(done){
       //done(); // Disables test
       pc.graph()
         .source("P11766", "uniprot")
@@ -108,21 +111,21 @@ describe('test graph module', function() {
   describe('graph call with conv. function and invalid uniprot ID', function() {
     var output1;
 
-    beforeEach(function(done){
+    before(function(done){
       try {
         pc.graph()
           .source("P2090r8", "uniprot")
           .kind("NEIGHBORHOOD")
           .format("JSONLD")
           .fetch()
-          .then(function(x) {
+          .then(function() {
             done();
-          })
+          });
       }
       catch(e) {
         output1 = e;
         done();
-      };
+      }
     });
 
     it('The graph request should return a SyntaxError', function() {
@@ -135,12 +138,13 @@ describe('test graph module', function() {
     this.timeout(40000);
     var output1;
 
-    beforeEach(function(done){
+    before(function(done){
       //done(); // Disables test
       pc.graph()
         .source("CHEBI:16236", "chebi")
         .kind("NEIGHBORHOOD")
         .format("JSONLD")
+        .direction("bothstream")
         .fetch()
         .then(function(x) {
           output1 = x;
@@ -157,21 +161,22 @@ describe('test graph module', function() {
   describe('graph call with conv. function and invalid CHEBI ID', function() {
     var output1;
 
-    beforeEach(function(done){
+    before(function(done){
       try {
         pc.graph()
           .source("CHEBI:r16236", "chebi")
           .kind("NEIGHBORHOOD")
           .format("JSONLD")
+          .direction("bothstream")
           .fetch()
-          .then(function(x) {
+          .then(function() {
             done();
-          })
+          });
       }
       catch(e) {
         output1 = e;
         done();
-      };
+      }
     });
 
     it('The graph request should return a SyntaxError', function() {
@@ -184,12 +189,13 @@ describe('test graph module', function() {
     this.timeout(40000);
     var output1;
 
-    beforeEach(function(done){
+    before(function(done){
       //done(); // Disables test
       pc.graph()
         .source("IGFBP1", "hgnc")
         .kind("NEIGHBORHOOD")
         .format("JSONLD")
+        .direction("bothstream")
         .fetch()
         .then(function(x) {
           output1 = x;
@@ -206,21 +212,22 @@ describe('test graph module', function() {
   describe('graph call with conv. function and invalid HGNC ID', function() {
     var output1;
 
-    beforeEach(function(done){
+    before(function(done){
       try {
         pc.graph()
           .source("!@#$%^&*", "hgnc")
           .kind("NEIGHBORHOOD")
           .format("JSONLD")
+          .direction("bothstream")
           .fetch()
-          .then(function(x) {
+          .then(function() {
             done();
-          })
+          });
       }
       catch(e) {
         output1 = e;
         done();
-      };
+      }
     });
 
     it('The graph request should return a SyntaxError', function() {

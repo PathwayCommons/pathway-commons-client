@@ -1,4 +1,4 @@
-Pathway Commons JS Library [![Build Status](https://travis-ci.org/PathwayCommons/cpath2-client.svg?branch=master)](https://travis-ci.org/PathwayCommons/cpath2-client)
+Pathway Commons JS Library [![Build Status](https://travis-ci.org/PathwayCommons/pathway-commons-client.svg?branch=master)](https://travis-ci.org/PathwayCommons/pathway-commons-client)
 ================
 
 # Description
@@ -77,7 +77,7 @@ The following environment variables can be used to configure the server:
 
 - `NODE_ENV` : the environment mode, either `production` or `development` (default)
 - `PORT` : the port on which the server runs (default 3000)
-
+- `PC_URL` : Pathway Commons web service endpoint URL (defautl is `http://www.pathwaycommons.org/pc2/`)
 
 
 ### Run targets

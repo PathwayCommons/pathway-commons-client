@@ -1,5 +1,4 @@
 'use strict';
-var constants = require('./constants.js');
 
 var fetch = require('fetch-ponyfill')().fetch;
 var isEmpty = require('lodash.isempty');
@@ -81,7 +80,8 @@ module.exports = class PcRequest {
   }
 
   fetch() {
-    var url = constants.pcAddress + this.command + (this.formatString ? "." + this.formatString : "") + "?" + stringify(Object.assign({}, this.queryObject, this.submitId ? {
+    var url = utilities.endpoint() + this.command + ((this.formatString) ? "." + this.formatString : "")
+      + "?" + stringify(Object.assign({}, this.queryObject, this.submitId ? {
       user: this.user
     } : {}));
 
@@ -89,7 +89,9 @@ module.exports = class PcRequest {
       switch (res.status) {
         case 200:
           // To read headers from both node and browser fetch
-          var contentType = res.headers._headers ? res.headers._headers["content-type"][0] : res.headers.map["content-type"];
+          var contentType = res.headers._headers
+            ? res.headers._headers["content-type"][0]
+              : res.headers.map["content-type"];
           return contentType.toLowerCase().indexOf("json") !== -1 ? res.json() : res.text();
         case 500:
           return null;
@@ -98,4 +100,4 @@ module.exports = class PcRequest {
       }
     });
   }
-}
+};

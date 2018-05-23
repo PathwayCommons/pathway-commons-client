@@ -9,7 +9,7 @@ describe('test datasources module', function() {
     // Assume Promises supported
     var output1;
 
-    beforeEach(function(done){
+    before(function(done){
       pc.datasources.fetch().then(function(x) {
         output1 = x;
         done();
@@ -26,7 +26,7 @@ describe('test datasources module', function() {
     // Assume Promises supported
     var output1;
 
-    beforeEach(function(done){
+    before(function(done){
       pc.datasources.refresh().then(function(x) {
         output1 = x;
         done();
@@ -43,7 +43,7 @@ describe('test datasources module', function() {
     // Assume Promises supported
     var output1;
 
-    beforeEach(function(done){
+    before(function(done){
       pc.datasources.lookupIcon("reactome").then(function(x) {
         output1 = x;
         done();
@@ -60,7 +60,7 @@ describe('test datasources module', function() {
     // Assume Promises supported
     var output1;
 
-    beforeEach(function(done){
+    before(function(done){
       pc.datasources.lookupIcon("nodata").then(function(x) {
         output1 = x;
         done();

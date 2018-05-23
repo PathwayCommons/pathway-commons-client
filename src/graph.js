@@ -69,7 +69,7 @@ module.exports = class Graph {
       this.request.set("target", value);
     } else {
       sourceCheck(datasource, value) ? this.request.set("target", value) : () => {
-        throw new SyntaxError(value + " invalid " + datasource)
+        throw new SyntaxError(value + " invalid " + datasource);
       };
     }
 
@@ -144,4 +144,4 @@ module.exports = class Graph {
   fetch() {
     return this.request.fetch();
   }
-}
+};

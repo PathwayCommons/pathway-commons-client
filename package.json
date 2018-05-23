@@ -1,18 +1,18 @@
 {
   "name": "pathway-commons",
-  "version": "1.5.4",
+  "version": "1.6.0",
   "description": "Library to facilitate access to the Pathway Commons web service",
   "author": "Manfred Cheung @ UofT <mj3cheun@uwaterloo.ca>",
   "license": "MIT",
   "main": "dist/pathway-commons.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/PathwayCommons/cpath2-client.git"
+    "url": "https://github.com/PathwayCommons/pathway-commons-client.git"
   },
   "bugs": {
-    "url": "https://github.com/PathwayCommons/cpath2-client/issues"
+    "url": "https://github.com/PathwayCommons/pathway-commons-client/issues"
   },
-  "homepage": "https://github.com/PathwayCommons/cpath2-client",
+  "homepage": "https://github.com/PathwayCommons/pathway-commons-client",
   "scripts": {
     "lint:js": "eslint ./src",
     "bundle:js": "webpack",
@@ -31,7 +31,7 @@
     "predocs": "gulp clean-docs",
     "docs": "jsdoc ./src -d ./docs",
     "postdocs": "open docs/index.html",
-    "test": "mocha --timeout 5000",
+    "test": "mocha",
     "prebuild": "npm run clean",
     "build": "gulp build",
     "clean": "rimraf dist rimraf docs",

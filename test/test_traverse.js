@@ -10,8 +10,7 @@ pc.utilities.user("unit-test");
 describe('test traverse module', function() {
   describe('traverse call with object argument and fetch with promise', function() {
     var output1;
-
-    beforeEach(function(done){
+    before(function(done){
       pc.traverse()
         .query({
           uri: 'http://identifiers.org/reactome/R-HSA-201451',
@@ -24,7 +23,6 @@ describe('test traverse module', function() {
           done();
         });
     });
-
     it('The traverse request should return a non-empty string', function() {
       chai.assert.typeOf(output1, "string");
       chai.assert.isAbove(output1.length, 1);
@@ -34,8 +32,7 @@ describe('test traverse module', function() {
   describe('traverse call with chained uri, path, and format functions', function() {
     // Assume Promises supported
     var output1;
-
-    beforeEach(function(done){
+    before(function(done){
       pc.traverse()
         .uri('http://identifiers.org/reactome/R-HSA-201451')
         .path('Entity/name')
@@ -46,7 +43,6 @@ describe('test traverse module', function() {
           done();
         });
     });
-
     it('The traverse request should return a non-empty string', function() {
       chai.assert.typeOf(output1, "string");
       chai.assert.isAbove(output1.length, 1);
@@ -56,8 +52,7 @@ describe('test traverse module', function() {
   describe('traverse call with object argument and object format and output', function() {
     // Assume Promises supported
     var output1;
-
-    beforeEach(function(done){
+    before(function(done){
       pc.traverse()
         .query({
           uri: 'http://identifiers.org/reactome/R-HSA-201451',
@@ -70,7 +65,6 @@ describe('test traverse module', function() {
           done();
         });
     });
-
     it('The traverse request should return a non-empty object', function() {
       chai.assert.typeOf(output1, "object");
     });
@@ -79,12 +73,11 @@ describe('test traverse module', function() {
   describe('traverse call with object argument and default format', function() {
     // Assume Promises supported
     var output1;
-
-    beforeEach(function(done){
+    before(function(done){
       pc.traverse()
         .query({
           uri: 'http://identifiers.org/reactome/R-HSA-201451',
-          path: 'Entity/name'
+          path: 'Named/name'
         })
         .fetch()
         .then(function(str) {
@@ -92,20 +85,20 @@ describe('test traverse module', function() {
           done();
         });
     });
-
     it('The traverse request should return a non-empty object', function() {
       chai.assert.typeOf(output1, "object");
+      chai.assert.typeOf(output1.traverseEntry, "array");
+      chai.assert.equal(output1.traverseEntry.length, 1);
     });
   });
 
   describe('traverse call with object argument and invalid uri', function() {
     var output1;
-
-    beforeEach(function(done){
+    before(function(done){
       pc.traverse()
         .query({
           uri: 'iiiiiiiiiiiiiiiiiiiiiiiii',
-          path: 'Entity/name'
+          path: 'Named/name'
         })
         .fetch()
         .then(function(x) {
@@ -113,9 +106,8 @@ describe('test traverse module', function() {
           done();
         });
     });
-
-    it('The traverse request should return a null', function() {
-      chai.assert.equal(output1, null);
+    it('The traverse request should return a trivial/empty result', function() {
+      chai.assert.equal(output1.traverseEntry, false);
     });
   });
 });

@@ -11,7 +11,7 @@ describe('test search module', function() {
   describe('search call with object argument and fetch with promise', function() {
     var output1;
 
-    beforeEach(function(done){
+    before(function(done){
       pc.search()
         .query({q: 'brca1'})
         .format('xml')
@@ -32,7 +32,7 @@ describe('test search module', function() {
     // Assume Promises supported
     var output1;
 
-    beforeEach(function(done){
+    before(function(done){
       pc.search()
         .q('brca1')
         .type('pathway')
@@ -54,7 +54,7 @@ describe('test search module', function() {
     // Assume Promises supported
     var output1;
 
-    beforeEach(function(done){
+    before(function(done){
       pc.search()
         .query({
           q: 'brca1'
@@ -76,7 +76,7 @@ describe('test search module', function() {
     // Assume Promises supported
     var output1;
 
-    beforeEach(function(done){
+    before(function(done){
       pc.search()
         .query({
           q: 'brca1'
@@ -96,7 +96,7 @@ describe('test search module', function() {
   describe('search call with object argument and invalid uri', function() {
     var output1;
 
-    beforeEach(function(done){
+    before(function(done){
       pc.search()
         .query({
           q: 'iiiiiiiiiiiiiiiiiiiiiiiii',
@@ -109,8 +109,8 @@ describe('test search module', function() {
         });
     });
 
-    it('The search request should return a null', function() {
-      chai.assert.equal(output1, null);
+    it('The search request should return trivial result', function() {
+      chai.assert.equal(output1.numHits, 0);
     });
   });
 });

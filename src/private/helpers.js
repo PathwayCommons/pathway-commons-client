@@ -1,5 +1,4 @@
 'use strict';
-var constants = require('./constants.js');
 
 module.exports = {
   /**
@@ -23,4 +22,4 @@ module.exports = {
   escapeLucene: (inputString) => {
     return inputString.replace(/([\!\*\+\-\&\|\(\)\[\]\{\}\^\~\?\:\/\\"])/g, "\\$1");
   }
-}
+};

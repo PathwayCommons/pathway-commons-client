@@ -73,4 +73,4 @@ module.exports = class Traverse {
   fetch() {
     return this.request.fetch();
   }
-}
+};
